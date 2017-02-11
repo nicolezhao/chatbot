@@ -29,13 +29,14 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {
             sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
         }
-    }
-    res.sendStatus(200);
-    if (event.message && event.message.text) {  
-    if (!kittenMessage(event.sender.id, event.message.text)) {
+        if (event.message && event.message.text) {  
+        if (!kittenMessage(event.sender.id, event.message.text)) {
         sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
     }
 }
+    }
+    res.sendStatus(200);
+
 });
 
 // generic function sending messages
