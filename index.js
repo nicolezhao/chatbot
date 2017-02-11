@@ -65,10 +65,10 @@ function kittenMessage(recipientId, text) {
     text = text || "";
     var values = text.split(' ');
 
-    if (values.length === 3 && values[0] === 'kitten') {
+    if (values.length === 3 && values[0] === 'bear') {
         if (Number(values[1]) > 0 && Number(values[2]) > 0) {
 
-            var imageUrl = "https://placekitten.com/" + Number(values[1]) + "/" + Number(values[2]);
+            var imageUrl = "https://placebear.com/" + Number(values[1]) + "/" + Number(values[2]);
 
             message = {
                 "attachment": {
@@ -76,13 +76,13 @@ function kittenMessage(recipientId, text) {
                     "payload": {
                         "template_type": "generic",
                         "elements": [{
-                            "title": "Kitten",
-                            "subtitle": "Cute kitten picture",
+                            "title": "Bear",
+                            "subtitle": "Here's a bear",
                             "image_url": imageUrl ,
                             "buttons": [{
                                 "type": "web_url",
                                 "url": imageUrl,
-                                "title": "Show kitten"
+                                "title": "Show me bear"
                                 }, {
                                 "type": "postback",
                                 "title": "I like this",
