@@ -31,6 +31,11 @@ app.post('/webhook', function (req, res) {
         }
     }
     res.sendStatus(200);
+    if (event.message && event.message.text) {  
+    if (!kittenMessage(event.sender.id, event.message.text)) {
+        sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
+    }
+}
 });
 
 // generic function sending messages
@@ -50,6 +55,7 @@ function sendMessage(recipientId, message) {
             console.log('Error: ', response.body.error);
         }
     });
+
 };
 
 // send rich message with kitten
@@ -95,9 +101,3 @@ function kittenMessage(recipientId, text) {
     return false;
 
 };
-
-if (event.message && event.message.text) {  
-    if (!kittenMessage(event.sender.id, event.message.text)) {
-        sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
-    }
-}
