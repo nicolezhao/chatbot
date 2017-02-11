@@ -30,16 +30,11 @@ app.post('/webhook', function (req, res) {
             sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
         }
         if (event.message && event.message.text) {  
-        if (!kittenMessage(event.sender.id, event.message.text)) {
-        sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
-          }
-        }
-        if (event.message && event.message.text) {  
-            if (!kittenMessage(event.sender.id, event.message.text)) {
-                sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
-            }
-        } else if (event.postback) {
+          if (!bearMessage(event.sender.id, event.message.text)) {
+            sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
+          } else if (event.postback) {
             console.log("Postback received: " + JSON.stringify(event.postback));
+        }
         }
     }
     res.sendStatus(200);
@@ -66,8 +61,8 @@ function sendMessage(recipientId, message) {
 
 };
 
-// send rich message with kitten
-function kittenMessage(recipientId, text) {
+// send rich message 
+function bearMessage(recipientId, text) {
 
     text = text || "";
     var values = text.split(' ');
@@ -93,7 +88,7 @@ function kittenMessage(recipientId, text) {
                                 }, {
                                 "type": "postback",
                                 "title": "I like this",
-                                "payload": "User " + recipientId + " likes kitten " + imageUrl,
+                                "payload": "User " + recipientId + " likes bear " + imageUrl,
                             }]
                         }]
                     }
