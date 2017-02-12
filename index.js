@@ -21,7 +21,6 @@ app.get('/webhook', function (req, res) {
     }
 });
 
-/*
 // handler receiving messages
 app.post('/webhook', function (req, res) {  
     var events = req.body.entry[0].messaging;
@@ -30,23 +29,6 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {  
             if (!bearMessage(event.sender.id, event.message.text)) {
                 sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
-            }
-        } else if (event.postback) {
-            console.log("Postback received: " + JSON.stringify(event.postback));
-        }
-    }
-    res.sendStatus(200);
-});
-*/
-
-// handler receiving messages
-app.post('/webhook', function (req, res) {  
-    var events = req.body.entry[0].messaging;
-    for (i = 0; i < events.length; i++) {
-        var event = events[i];
-        if (event.message && event.message.text) {  
-            if (!bearMessage(event.sender.id, {text: "hi"})) {
-                sendMessage(event.sender.id, {text: "How are you"});
             }
         } else if (event.postback) {
             console.log("Postback received: " + JSON.stringify(event.postback));
