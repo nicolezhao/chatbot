@@ -101,7 +101,7 @@ function bearMessage(recipientId, text) {
 
 };
 
-
+/*
 function TOweatherMessage(recipientId, text) {
 
     text = text || "";
