@@ -57,6 +57,7 @@ function sendMessage(recipientId, message) {
 
 };
 
+/*
 function outfitMessage(recipientId, text)  {
 
     text = text || "";
@@ -109,6 +110,7 @@ function outfitMessage(recipientId, text)  {
     return false;
 
 };
+*/
 
 
 
