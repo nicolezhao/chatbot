@@ -27,8 +27,8 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {  
-            if (!bearMessage(event.sender.id, event.message.text)) {
-                sendMessage(event.sender.id, {text: "C: " + event.message.text});
+            if (!weatherMessage(event.sender.id, event.message.text)) {
+                sendMessage(event.sender.id, {text: "D: " + event.message.text});
             }
         } else if (event.postback) {
             console.log("Postback received: " + JSON.stringify(event.postback));
@@ -58,15 +58,14 @@ function sendMessage(recipientId, message) {
 };
 
 // send rich message 
-function bearMessage(recipientId, text) {
+function weatherMessage(recipientId, text) {
 
     text = text || "";
     var values = text.split(' ');
 
-    if (values.length === 3 && values[0] === 'bear') {
-        if (Number(values[1]) > 0 && Number(values[2]) > 0) {
+    if (values.length === 1 && values[0] === 'Toronto') {
 
-            var imageUrl = "https://placebear.com/" + Number(values[1]) + "/" + Number(values[2]);
+            var imageUrl = "https://www.theweathernetwork.com/ca/hourly-weather-forecast/ontario/toronto";
 
             message = {
                 "attachment": {
@@ -74,30 +73,29 @@ function bearMessage(recipientId, text) {
                     "payload": {
                         "template_type": "generic",
                         "elements": [{
-                            "title": "Bear",
-                            "subtitle": "Here's a bear",
-                            "image_url": imageUrl ,
+                            "title": "Weather",
+                            "subtitle": "Toronto",
                             "buttons": [{
                                 "type": "web_url",
                                 "url": imageUrl,
-                                "title": "Show me bear"
+                                "title": "Show me the weather"
                             }, {
                                 "type": "postback",
                                 "title": "I like this",
-                                "payload": "User " + recipientId + " likes bear " + imageUrl,
+                                "payload": "User " + recipientId + " likes us " + imageUrl,
                                 }],
                             }, {
-                                "title": "Bear",
-                                "subtitle": "Here's a bear",
-                                "image_url": imageUrl ,
+                                "title": "Weather",
+                                "subtitle": "Toronto",
+                                //"image_url": imageUrl ,
                                 "buttons": [{
                                 "type": "web_url",
                                 "url": imageUrl,
-                                "title": "Show me bear"
+                                "title": "Show me the weather"
                             }, {
                                 "type": "postback",
                                 "title": "I like this",
-                                "payload": "User " + recipientId + " likes bear " + imageUrl,
+                                "payload": "User " + recipientId + " likes us " + imageUrl,
                             }],
                         }]
                     }
@@ -107,7 +105,6 @@ function bearMessage(recipientId, text) {
             sendMessage(recipientId, message);
 
             return true;
-        }
     }
 
     return false;
