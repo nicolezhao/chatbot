@@ -33,7 +33,11 @@ app.post('/webhook', function (req, res) {
         } else if (event.postback) {
             outfitMessage(event.sender.id, event.message.text);
             console.log("Postback received: " + JSON.stringify(event.postback));
-        }
+        } else if (event.postback) {
+        let text = JSON.stringify(event.postback)
+        sendTextMessage(event.sender.id, "Postback received: "+text.substring(0, 200), token)
+        continue
+      }
     }
     res.sendStatus(200);
 });
