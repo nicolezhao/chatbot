@@ -28,7 +28,7 @@ app.post('/webhook', function (req, res) {
         var event = events[i];
         if (event.message && event.message.text) {  
             if ((!weatherMessage(event.sender.id, event.message.text)) && (!outfitMessage(event.sender.id, event.message.text))) {
-                sendMessage(event.sender.id, {text: "D: " + event.message.text});
+                sendMessage(event.sender.id, {text: "E: " + event.message.text});
             }
         } else if (event.postback) {
             console.log("Postback received: " + JSON.stringify(event.postback));
@@ -154,7 +154,6 @@ function weatherMessage(recipientId, text) {
                                 "type": "postback",
                                 "title": "Show me outfits",
                                 "payload": "User " + recipientId + " likes us " + imageUrl,
-                                outfitMessage(recipientId, text);
                             }],
                         }]
                     }
