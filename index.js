@@ -28,16 +28,13 @@ app.post('/webhook', function (req, res) {
         var event = events[i];
         if (event.message && event.message.text) {  
             if (!weatherMessage(event.sender.id, event.message.text)) {
-                sendMessage(event.sender.id, {text: "F: " + event.message.text});
+                sendMessage(event.sender.id, {text: "G: " + event.message.text});
             }
         } else if (event.postback) {
             outfitMessage(event.sender.id, event.message.text);
             console.log("Postback received: " + JSON.stringify(event.postback));
-        } else if (event.postback) {
-        let text = JSON.stringify(event.postback)
-        sendMessage(event.sender.id, "Postback received")
-        continue
-      }
+            sendMessage(event.sender.id, "Message Received")
+        }
     }
     res.sendStatus(200);
 });
