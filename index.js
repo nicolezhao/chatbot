@@ -35,7 +35,7 @@ app.post('/webhook', function (req, res) {
             console.log("Postback received: " + JSON.stringify(event.postback));
         } else if (event.postback) {
         let text = JSON.stringify(event.postback)
-        sendTextMessage(event.sender.id, "Postback received: "+text.substring(0, 200), token)
+        sendMessage(event.sender.id, "Postback received: "+text.substring(0, 200), token)
         continue
       }
     }
