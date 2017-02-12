@@ -31,41 +31,7 @@ app.post('/webhook', function (req, res) {
                 sendMessage(event.sender.id, {text: "G: " + event.message.text});
             }
         } else if (event.postback) {
-            message = {
-                "attachment": {
-                    "type": "template",
-                    "payload": {
-                        "template_type": "generic",
-                        "elements": [{
-                            "title": "Toronto",
-                            "subtitle": "-2°",
-                            "buttons": [{
-                                "type": "web_url",
-                                "url": imageUrl,
-                                "title": "Show me the weather"
-                            }, {
-                                "type": "postback",
-                                "title": "Show me outfits",
-                                "payload": "User " + recipientId + " likes us " + imageUrl,
-                                }],
-                            }, {
-                                "title": "Weather",
-                                "subtitle": "Toronto",
-                                //"image_url": imageUrl ,
-                                "buttons": [{
-                                "type": "web_url",
-                                "url": imageUrl,
-                                "title": "Show me the weather"
-                            }, {
-                                "type": "postback",
-                                "title": "Show me outfits",
-                                "payload": "User " + recipientId + " likes us ",
-                            }],
-                        }]
-                    }
-                }
-            };
-            sendMessage(event.sender.id, message);
+            sendMessage(event.sender.id, {text: "Got your message"});
             console.log("Postback received: " + JSON.stringify(event.postback));
         }
     }
