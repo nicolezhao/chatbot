@@ -27,7 +27,7 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {  
-            if (!bearMessage(event.sender.id, event.message.text) && !TOweatherMessage(event.sender.id, event.message.text)) {
+            if (!bearMessage(event.sender.id, event.message.text)) {
                 sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
             }
         } else if (event.postback) {
@@ -101,12 +101,13 @@ function bearMessage(recipientId, text) {
 
 };
 
+/*
 function TOweatherMessage(recipientId, text) {
 
     text = text || "";
     var values = text.split(' ');
 
-    if (values.length === 3 && values[0] === 'Toronto') {
+    if (values.length === 1 && values[0] === 'Toronto') {
 
             var weatherUrl = "https://www.theweathernetwork.com/ca/alerts/high-alert/ontario/toronto";
 
@@ -137,3 +138,4 @@ function TOweatherMessage(recipientId, text) {
     return false;
 
 };
+*/
