@@ -27,10 +27,11 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {  
-            if (!weatherMessage(event.sender.id, event.message.text)) {
+            //if (!weatherMessage(event.sender.id, event.message.text)) {
                 sendMessage(event.sender.id, {text: "E: " + event.message.text});
-            }
+            //}
         } else if (event.postback) {
+            outfitMessage(event.sender.id, event.message.text);
             console.log("Postback received: " + JSON.stringify(event.postback));
         }
     }
@@ -57,7 +58,7 @@ function sendMessage(recipientId, message) {
 
 };
 
-/*
+
 function outfitMessage(recipientId, text)  {
 
     text = text || "";
@@ -110,7 +111,7 @@ function outfitMessage(recipientId, text)  {
     return false;
 
 };
-*/
+
 
 
 
