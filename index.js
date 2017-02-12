@@ -27,8 +27,8 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {  
-            if (!bearMessage(event.sender.id, event.message.text)) {
-                sendMessage(event.sender.id, {text: "A: " + event.message.text});
+            if (!TOweatherMessage(event.sender.id, event.message.text)) {
+                sendMessage(event.sender.id, {text: "B: " + event.message.text});
             }
         } else if (event.postback) {
             console.log("Postback received: " + JSON.stringify(event.postback));
@@ -57,6 +57,7 @@ function sendMessage(recipientId, message) {
 
 };
 
+/*
 // send rich message 
 function bearMessage(recipientId, text) {
 
@@ -95,6 +96,44 @@ function bearMessage(recipientId, text) {
 
             return true;
         }
+    }
+
+    return false;
+
+};
+*/
+
+function TOweatherMessage(recipientId, text) {
+
+    text = text || "";
+    var values = text.split(' ');
+
+    if (values.length === 1 && values[0] === 'Toronto') {
+
+            var weatherUrl = "https://www.theweathernetwork.com/ca/alerts/high-alert/ontario/toronto";
+
+            message = {
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                            "buttons": [{
+                                "type": "web_url",
+                                "url": weatherUrl,
+                                "title": "Show me the weather in" + text;
+                                }, {
+                                "type": "postback",
+                                "title": "I like this",
+                                "payload": "User " + recipientId + " likes weather " + weatherUrl,
+                            }]
+                    }
+                }
+            };
+
+            sendMessage(recipientId, message);
+
+            return true;
+        
     }
 
     return false;
