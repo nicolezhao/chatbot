@@ -28,7 +28,7 @@ app.post('/webhook', function (req, res) {
         var event = events[i];
         if (event.message && event.message.text) {  
             if (!bearMessage(event.sender.id, event.message.text)) {
-                sendMessage(event.sender.id, {text: "B: " + event.message.text});
+                sendMessage(event.sender.id, {text: "C: " + event.message.text});
             }
         } else if (event.postback) {
             console.log("Postback received: " + JSON.stringify(event.postback));
@@ -81,11 +81,24 @@ function bearMessage(recipientId, text) {
                                 "type": "web_url",
                                 "url": imageUrl,
                                 "title": "Show me bear"
-                                }, {
+                            }, {
                                 "type": "postback",
                                 "title": "I like this",
                                 "payload": "User " + recipientId + " likes bear " + imageUrl,
-                            }]
+                                }],
+                            }, {
+                                "title": "Bear",
+                                "subtitle": "Here's a bear",
+                                "image_url": imageUrl ,
+                                "buttons": [{
+                                "type": "web_url",
+                                "url": imageUrl,
+                                "title": "Show me bear"
+                            }, {
+                                "type": "postback",
+                                "title": "I like this",
+                                "payload": "User " + recipientId + " likes bear " + imageUrl,
+                            }],
                         }]
                     }
                 }
