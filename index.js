@@ -57,15 +57,14 @@ function sendMessage(recipientId, message) {
 
 };
 
-// send rich message 
-function weatherMessage(recipientId, text) {
+function outfitMessage(recipientId, text)  {
 
     text = text || "";
     var values = text.split(' ');
 
     if (values.length === 1 && values[0] === 'Toronto') {
 
-            var imageUrl = "https://www.theweathernetwork.com/ca/hourly-weather-forecast/ontario/toronto";
+            var imageUrl = "https://www.pinterest.com/pin/AdFO5sYa7C0wmM1eNhF3SWn192Ru_VGnAHMnQndpboCJEGWNnrdx2Ek/";
 
             message = {
                 "attachment": {
@@ -73,7 +72,7 @@ function weatherMessage(recipientId, text) {
                     "payload": {
                         "template_type": "generic",
                         "elements": [{
-                            "title": "Weather",
+                            "title": "Outfit 2",
                             "subtitle": "Toronto",
                             "buttons": [{
                                 "type": "web_url",
@@ -85,7 +84,7 @@ function weatherMessage(recipientId, text) {
                                 "payload": "User " + recipientId + " likes us " + imageUrl,
                                 }],
                             }, {
-                                "title": "Weather",
+                                "title": "Outfit 2",
                                 "subtitle": "Toronto",
                                 //"image_url": imageUrl ,
                                 "buttons": [{
@@ -110,3 +109,62 @@ function weatherMessage(recipientId, text) {
     return false;
 
 };
+
+
+
+
+// send rich message 
+function weatherMessage(recipientId, text) {
+
+    text = text || "";
+    var values = text.split(' ');
+
+    if (values.length === 1 && values[0] === 'Toronto') {
+
+            var imageUrl = "https://www.theweathernetwork.com/ca/hourly-weather-forecast/ontario/toronto";
+
+            message = {
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": [{
+                            "title": "Toronto",
+                            "subtitle": "-2°",
+                            "buttons": [{
+                                "type": "web_url",
+                                "url": imageUrl,
+                                "title": "Show me the weather"
+                            }, {
+                                "type": "postback",
+                                "title": "I like this",
+                                "payload": "User " + recipientId + " likes us " + imageUrl,
+                                }],
+                            }, {
+                                "title": "Weather",
+                                "subtitle": "Toronto",
+                                //"image_url": imageUrl ,
+                                "buttons": [{
+                                "type": "web_url",
+                                "url": imageUrl,
+                                "title": "Show me the weather"
+                            }, {
+                                "type": "postback",
+                                "title": "Show me outfits",
+                                "payload": "User " + recipientId + " likes us " + imageUrl,
+                                outfitMessage(recipientId, text);
+                            }],
+                        }]
+                    }
+                }
+            };
+
+            sendMessage(recipientId, message);
+
+            return true;
+    }
+
+    return false;
+
+};
+
