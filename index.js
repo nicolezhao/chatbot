@@ -33,6 +33,8 @@ app.post('/webhook', function (req, res) {
         } else if (event.postback) {
             //message = {text: "Here are some outfits!"};
             //sendMessage(event.sender.id, message);
+            text = text || "";
+            var values = text.split(' ');
             var imageUrl = "https://www.theweathernetwork.com/ca/hourly-weather-forecast/ontario/toronto";
             message = {text: 
                 "attachment": {
