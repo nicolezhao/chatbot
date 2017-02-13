@@ -31,7 +31,19 @@ app.post('/webhook', function (req, res) {
                 sendMessage(event.sender.id, {text: "G: " + event.message.text});
             }
         } else if (event.postback) {
-            message = {text: "Here are some outfits!"};
+            message = {text: "Here are some outfits!"
+                        "attachment": {
+                        "type": "template",
+                        "payload": {
+                            "template_type": "generic",
+                            "elements": [{
+                                "title": "Toronto",
+                                "subtitle": "-2°",
+                                "buttons": [{
+                                    "type": "web_url",
+                                    "url": imageUrl,
+                                    "title": "Show me the weather"
+                                }};
             sendMessage(event.sender.id, message);
             /* text = text || "";
             var values = text.split(' ');
