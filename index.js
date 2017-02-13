@@ -33,53 +33,7 @@ app.post('/webhook', function (req, res) {
         } else if (event.postback) {
             //message = {text: "Here are some outfits!"};
             //sendMessage(event.sender.id, message);
-            function outfitMessage(recipientId, text) {
-
-                text = text || "";
-                var values = text.split(' ');
-
-                        var imageUrl = "https://www.theweathernetwork.com/ca/hourly-weather-forecast/ontario/toronto";
-
-                        message = {
-                            "attachment": {
-                                "type": "template",
-                                "payload": {
-                                    "template_type": "generic",
-                                    "elements": [{
-                                        "title": "Toronto",
-                                        "subtitle": "-2°",
-                                        "buttons": [{
-                                            "type": "web_url",
-                                            "url": imageUrl,
-                                            "title": "Show me the weather"
-                                        }, {
-                                            "type": "postback",
-                                            "title": "Show me outfits",
-                                            "payload": "User " + recipientId + " likes us " + imageUrl,
-                                            }],
-                                        }, {
-                                            "title": "Weather",
-                                            "subtitle": "Toronto",
-                                            //"image_url": imageUrl ,
-                                            "buttons": [{
-                                            "type": "web_url",
-                                            "url": imageUrl,
-                                            "title": "Show me the weather"
-                                        }, {
-                                            "type": "postback",
-                                            "title": "Show me outfits",
-                                            "payload": "User " + recipientId + " likes us ",
-                                        }],
-                                    }]
-                                }
-                            }
-                        };
-
-                        sendMessage(recipientId, message);
-
-                        return true;
-
-            };
+            sendMessage(event.sender.id, outfitMessage(recipientId, text));
             console.log("Postback received: " + JSON.stringify(event.postback));
         }
     }
@@ -107,7 +61,7 @@ function sendMessage(recipientId, message) {
 };
 
 
-/*
+
 function outfitMessage(recipientId, text)  {
 
     text = text || "";
@@ -152,15 +106,13 @@ function outfitMessage(recipientId, text)  {
                 }
             };
 
-            sendMessage(recipientId, message);
-
-            return true;
+            return message;
     }
 
     return false;
 
 };
-*/
+
 
 
 
