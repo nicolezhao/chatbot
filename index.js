@@ -33,7 +33,7 @@ app.post('/webhook', function (req, res) {
         } else if (event.postback) {
             //message = {text: "Here are some outfits!"};
             //sendMessage(event.sender.id, message);
-            sendMessage(event.sender.id, outfitMessage(recipientId, text));
+            outfitMessage(event.sender.id, event.message.text);
             console.log("Postback received: " + JSON.stringify(event.postback));
         }
     }
@@ -106,7 +106,9 @@ function outfitMessage(recipientId, text)  {
                 }
             };
 
-            return message;
+            sendMessage(recipientId, message);
+
+            return true;
     }
 
     return false;
