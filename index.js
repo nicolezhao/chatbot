@@ -31,14 +31,13 @@ app.post('/webhook', function (req, res) {
                 sendMessage(event.sender.id, {text: "G: " + event.message.text});
             }
         } else if (event.postback) {
-            sendMessage(event.sender.id, {text: "Here are some outfits!"});
             message = {
                 "attachment": {
                     "type": "template",
                     "payload": {
                         "template_type": "generic",
                         "elements": [{
-                            "title": "Toronto",
+                            "title": "Here are some outfits!",
                             "subtitle": "-2°",
                             "buttons": [{
                                 "type": "web_url",
