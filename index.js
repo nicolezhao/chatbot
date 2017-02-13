@@ -31,8 +31,8 @@ app.post('/webhook', function (req, res) {
                 sendMessage(event.sender.id, {text: "G: " + event.message.text});
             }
         } else if (event.postback) {
-            message = {text: "Here are some outfits!"};
-            sendMessage(event.sender.id, message);
+            //message = {text: "Here are some outfits!"};
+            //sendMessage(event.sender.id, message);
             sendMessage(event.sender.id, {text: outfitMessage(event.sender.id)});
             console.log("Postback received: " + JSON.stringify(event.postback));
         }
