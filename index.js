@@ -31,7 +31,7 @@ app.post('/webhook', function (req, res) {
                 sendMessage(event.sender.id, {text: "G: " + event.message.text});
             }
         } else if (event.postback) {
-            message = "Here are some outfits!";
+            var message = "Here are some outfits!";
             sendMessage(event.sender.id, message);
             /* var imageUrl = "https://www.theweathernetwork.com/ca/hourly-weather-forecast/ontario/toronto";
             message = {
