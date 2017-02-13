@@ -34,12 +34,12 @@ app.post('/webhook', function (req, res) {
             message = {text: "Here are some outfits!"
                         "attachment": {
                         "type": "template",
-                        "payload": {
+                        "payload": 
                             "template_type": "generic",
-                            "elements": [{
+                            "elements": 
                                 "title": "Toronto",
                                 "subtitle": "-2°",
-                                "buttons": [{
+                                "buttons": 
                                     "type": "web_url",
                                     "url": imageUrl,
                                     "title": "Show me the weather"
