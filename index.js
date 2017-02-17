@@ -77,22 +77,7 @@ function sendMessage(recipientId, message) {
 
 function initialMessage(recepientId){
     message = {
-         "attachment": {
-            "template_type": "generic",
-                "elements": [{
-                    "title": "Outfit 1",
-                    "subtitle": "Got it",
-                    "buttons": [{
-                        "type": "web_url",
-                        "url": imageUrl,
-                        "title": "Outfits like this"
-                    }, {
-                        "type": "postback",
-                        "title": "I like this",
-                        "payload": "x",
-                        }],
-                    }, 
-                }
+         "initial"
             };
 };
 
