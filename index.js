@@ -32,16 +32,16 @@ app.post('/webhook', function (req, res) {
             if(text == 'hi'){
                 sendMessage(event.sender.id, {text: "Message received!"});
                 initialMessage(event.sender.id);
-            } else if (text =='Toronto'){
-                weatherMessage(event.sender.id, text);
-            }
+            } //else if (text =='Toronto'){
+               // weatherMessage(event.sender.id, text);
+            //}
             else{
                 sendMessage(event.sender.id, {text: "Could not process your message :("});
             }
            
         } else if (event.postback) {
-            if{
-
+            if (event.postback.payload == 'Toronto'){
+                weatherMessage(event.sender.id, text);
             }
             else if (event.postback.payload == 'Call outfits function'){
                 //message = {text: "Here are some outfits!"};
@@ -76,19 +76,24 @@ function sendMessage(recipientId, message) {
 };
 
 function initialMessagte(recepientId){
-    message ={
-        "elements": [{
-             "buttons": [{
-                "type": "web_url",
-                "url": imageUrl,
-                "title": "Toronto"
-                }, {
-                "type": "postback",
-                "title": "I like this",
-                "payload": "Toronto",
-            }],
-        }]
-    };
+    message = {
+         "attachment": {
+            "template_type": "generic",
+                "elements": [{
+                    "title": "Outfit 1",
+                    "subtitle": "Got it",
+                    "buttons": [{
+                        "type": "web_url",
+                        "url": imageUrl,
+                        "title": "Outfits like this"
+                    }, {
+                        "type": "postback",
+                        "title": "I like this",
+                        "payload": "x",
+                        }],
+                    }, 
+                }
+            };
 };
 
 
