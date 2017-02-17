@@ -78,9 +78,7 @@ function initialMessage(recipientId)  {
 
     message = {
         "attachment": {
-                    "type": "template",
                     "payload": {
-                        "template_type": "generic",
                         "elements": [{
                                 "buttons": [{
                                 "type": "postback",
