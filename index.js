@@ -45,8 +45,8 @@ app.post('/webhook', function (req, res) {
                 outfitMessage(event.sender.id);
                 //sendMessage(event.sender.id, {text: outfitMessage(event.sender.id)});
                 console.log("Postback received: " + JSON.stringify(event.postback));
-            } else if (if (event.postback.payload == 'Like')){
-                sendMessage(event.sender.id, {text: "<3"});
+            } else if (event.postback.payload == 'Like'){
+                sendMessage(event.sender.id, {text: "Could not process your message :("});
             }
         }
     }
