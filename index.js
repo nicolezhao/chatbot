@@ -27,7 +27,7 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {  
-            var text = event.message.text.toLowerCase().trim();
+            var text = event.message.text;
             console.log(text);
             if(text == 'hi'){
                 sendMessage(event.sender.id, text);
@@ -37,7 +37,7 @@ app.post('/webhook', function (req, res) {
             }
            
         } else if (event.postback) {
-            if (event.postback == 'Show me outfits'){
+            if (event.postback.payload == 'Outfit'){
                 message = {text: "Here are some outfits!"};
                 sendMessage(event.sender.id, message);
                 //sendMessage(event.sender.id, {text: outfitMessage(event.sender.id)});
@@ -94,7 +94,7 @@ function outfitMessage(recipientId)  {
                             }, {
                                 "type": "postback",
                                 "title": "I like this",
-                                "payload": "User " + recipientId + " likes us " + imageUrl,
+                                "payload": "Outfit",
                                 }],
                             }, {
                                 "title": "Outfit 2",
@@ -107,7 +107,7 @@ function outfitMessage(recipientId)  {
                             }, {
                                 "type": "postback",
                                 "title": "I like this",
-                                "payload": "User " + recipientId + " likes us " + imageUrl,
+                                "payload": "Outfit",
                             }],
                         }]
                     }
