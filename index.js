@@ -75,7 +75,7 @@ function sendMessage(recipientId, message) {
 
 };
 
-function initialMessagte(recepientId){
+function initialMessage(recepientId){
     message = {
          "attachment": {
             "template_type": "generic",
