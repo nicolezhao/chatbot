@@ -27,9 +27,9 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {  
-            if (!weatherMessage(event.sender.id, event.message.text)) {
-                sendMessage(event.sender.id, {text: "G: " + event.message.text});
-            }
+            //if (!weatherMessage(event.sender.id, event.message.text)) {
+            sendMessage(event.sender.id, {text: "G: " + event.message.text});
+            //}
         } else if (event.postback) {
             //message = {text: "Here are some outfits!"};
             //sendMessage(event.sender.id, message);
@@ -77,12 +77,12 @@ function outfitMessage(recipientId)  {
                     "payload": {
                         "template_type": "generic",
                         "elements": [{
-                            "title": "Outfit 2",
-                            "subtitle": "Toronto",
+                            "title": "Outfit 1",
+                            "subtitle": "Got it",
                             "buttons": [{
                                 "type": "web_url",
                                 "url": imageUrl,
-                                "title": "Show me the weather"
+                                "title": "Show me outfit"
                             }, {
                                 "type": "postback",
                                 "title": "I like this",
@@ -90,12 +90,12 @@ function outfitMessage(recipientId)  {
                                 }],
                             }, {
                                 "title": "Outfit 2",
-                                "subtitle": "Toronto",
+                                "subtitle": "Got it",
                                 //"image_url": imageUrl ,
                                 "buttons": [{
                                 "type": "web_url",
                                 "url": imageUrl,
-                                "title": "Show me the weather"
+                                "title": "Show me outfit"
                             }, {
                                 "type": "postback",
                                 "title": "I like this",
