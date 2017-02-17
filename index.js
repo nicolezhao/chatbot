@@ -29,7 +29,7 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {  
             var text = event.message.text;
             console.log(text);
-            if(text == 'hi'){
+            if(text == 'hello'){
                 sendMessage(event.sender.id, {text});
                 initialMessage(event.sender.id);
             } else if (text =='Toronto'){
