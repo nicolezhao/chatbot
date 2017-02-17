@@ -27,13 +27,19 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {  
-            (!weatherMessage(event.sender.id, event.message.text)) {
-            sendMessage(event.sender.id, {text: "G: " + event.message.text});
+            var text = event.message.text.toLowerCase().trim();
+            console.log(text);
+            if(text == 'hi'){
+                sendMessage(event.sender.id, text);
             }
+            else{
+                sendMessage(event.sender.id, {text: "A: " + text};
+            }
+           
         } else if (event.postback) {
-            //message = {text: "Here are some outfits!"};
-            //sendMessage(event.sender.id, message);
-            sendMessage(event.sender.id, {text: outfitMessage(event.sender.id)});
+            message = {text: "Here are some outfits!"};
+            sendMessage(event.sender.id, message);
+            //sendMessage(event.sender.id, {text: outfitMessage(event.sender.id)});
             console.log("Postback received: " + JSON.stringify(event.postback));
         }
     }
