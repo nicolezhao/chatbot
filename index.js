@@ -78,14 +78,10 @@ function initialMessage(recipientId)  {
 
     message = 
 {
-                                "title": "Outfit 2",
+                                "title": "Button",
                                 "subtitle": "Got it",
                                 //"image_url": imageUrl ,
                                 "buttons": [{
-                                "type": "web_url",
-                                "url": imageUrl,
-                                "title": "Outfits like this"
-                            }, {
                                 "type": "postback",
                                 "title": "I like this",
                                 "payload": "Like",
