@@ -76,8 +76,12 @@ function sendMessage(recipientId, message) {
 
 function initialMessage(recipientId)  {
 
-    message = 
-{
+    message = {
+        "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": [{
                                 "title": "Button",
                                 "subtitle": "Got it",
                                 //"image_url": imageUrl ,
@@ -86,7 +90,10 @@ function initialMessage(recipientId)  {
                                 "title": "I like this",
                                 "payload": "Like",
                             }],
-    };
+                        }]
+                    }
+                }
+            };
 
     sendMessage(recipientId, message);
     return true;
