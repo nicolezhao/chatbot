@@ -75,10 +75,8 @@ function sendMessage(recipientId, message) {
 
 function outfitMessage(recipientId)  {
 
-    text = text || "";
-    var values = text.split(' ');
-
-    if (values.length === 1 && values[0] === 'Toronto') {
+    //text = text || "";
+    //var values = text.split(' ');
 
             var imageUrl = "https://www.pinterest.com/pin/AdFO5sYa7C0wmM1eNhF3SWn192Ru_VGnAHMnQndpboCJEGWNnrdx2Ek/";
 
@@ -119,9 +117,6 @@ function outfitMessage(recipientId)  {
 
             sendMessage(recipientId, message);
             return true;
-    }
-
-    return false;
 
 };
 
