@@ -76,19 +76,21 @@ function sendMessage(recipientId, message) {
 
 function initialMessage(recipientId)  {
 
-    message = {
-        "attachment": {
-                    "payload": {
-                        "elements": [{
-                                "buttons": [{
-                                "type": "postback",
-                                "title": "I like this",
-                                "payload": "Like",
-                            }],
-                        }]
-                    }
-                }
-            };
+    messag ={
+    "text":"Pick a color:",
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Red",
+        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+      },
+      {
+        "content_type":"text",
+        "title":"Green",
+        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+      }
+    ]
+  }
 
     sendMessage(recipientId, message);
     return true;
