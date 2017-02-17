@@ -30,16 +30,20 @@ app.post('/webhook', function (req, res) {
             var text = event.message.text;
             console.log(text);
             if(text == 'hi'){
-                sendMessage(event.sender.id, {text});
+                sendMessage(event.sender.id, {text: "Message received!"});
+                initialMessage(event.sender.id);
             } else if (text =='Toronto'){
                 weatherMessage(event.sender.id, text);
             }
             else{
-                sendMessage(event.sender.id, {text: "A: " + text});
+                sendMessage(event.sender.id, {text: "Could not process your message :("});
             }
            
         } else if (event.postback) {
-            if (event.postback.payload == 'Call outfits function'){
+            if{
+
+            }
+            else if (event.postback.payload == 'Call outfits function'){
                 //message = {text: "Here are some outfits!"};
                 //sendMessage(event.sender.id, message);
                 outfitMessage(event.sender.id);
@@ -71,6 +75,21 @@ function sendMessage(recipientId, message) {
 
 };
 
+function initialMessagte(recepientId){
+    message ={
+        "elements": [{
+             "buttons": [{
+                "type": "web_url",
+                "url": imageUrl,
+                "title": "Toronto"
+                }, {
+                "type": "postback",
+                "title": "I like this",
+                "payload": "Toronto",
+            }],
+        }]
+    };
+};
 
 
 function outfitMessage(recipientId)  {
@@ -91,7 +110,7 @@ function outfitMessage(recipientId)  {
                             "buttons": [{
                                 "type": "web_url",
                                 "url": imageUrl,
-                                "title": "Show me outfit"
+                                "title": "Outfits like this"
                             }, {
                                 "type": "postback",
                                 "title": "I like this",
@@ -104,11 +123,11 @@ function outfitMessage(recipientId)  {
                                 "buttons": [{
                                 "type": "web_url",
                                 "url": imageUrl,
-                                "title": "Show me outfit"
+                                "title": "Outfits like this"
                             }, {
                                 "type": "postback",
                                 "title": "I like this",
-                                "payload": "x",
+                                "payload": "",
                             }],
                         }]
                     }
