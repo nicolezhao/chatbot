@@ -30,7 +30,7 @@ app.post('/webhook', function (req, res) {
             var text = event.message.text;
             console.log(text);
             if(text == 'hi'){
-                sendMessage(event.sender.id, {text: "Message received!"});
+                sendMessage(event.sender.id, {text});
             } else if (text =='Toronto'){
                 weatherMessage(event.sender.id, text);
             }
@@ -39,10 +39,7 @@ app.post('/webhook', function (req, res) {
             }
            
         } else if (event.postback) {
-            if{
-
-            }
-            else if (event.postback.payload == 'Call outfits function'){
+            if (event.postback.payload == 'Call outfits function'){
                 //message = {text: "Here are some outfits!"};
                 //sendMessage(event.sender.id, message);
                 outfitMessage(event.sender.id);
@@ -74,21 +71,6 @@ function sendMessage(recipientId, message) {
 
 };
 
-function initialMessagte(recepientId){
-    message ={
-        "elements": [{
-             "buttons": [{
-                "type": "web_url",
-                "url": imageUrl,
-                "title": "Toronto"
-                }, {
-                "type": "postback",
-                "title": "I like this",
-                "payload": "Toronto",
-            }],
-        }]
-    };
-};
 
 
 function outfitMessage(recipientId)  {
