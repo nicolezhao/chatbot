@@ -86,16 +86,15 @@ function initialMessage(recipientId)  {
                     "subtitle": "Got it",
                     "buttons": [{
                         "type": "web_url",
-                        "url": imageUrl,
                         "title": "Outfits like this"
                     }, 
-                        }]
-                    }
-                }
-            };
+                }]
+            }
+        }
+    };
 
-            sendMessage(recipientId, message);
-            return true;
+    sendMessage(recipientId, message);
+    return true;
 
 };
 
