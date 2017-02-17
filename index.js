@@ -82,9 +82,6 @@ function initialMessage(recipientId)  {
                     "payload": {
                         "template_type": "generic",
                         "elements": [{
-                                "title": "Button",
-                                "subtitle": "Got it",
-                                //"image_url": imageUrl ,
                                 "buttons": [{
                                 "type": "postback",
                                 "title": "I like this",
