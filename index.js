@@ -40,8 +40,8 @@ app.post('/webhook', function (req, res) {
            
         } else if (event.postback) {
             if (event.postback.payload == 'Call outfits function'){
-                message = {text: "Here are some outfits!"};
-                sendMessage(event.sender.id, message);
+                //message = {text: "Here are some outfits!"};
+                //sendMessage(event.sender.id, message);
                 outfitMessage(event.sender.id);
                 //sendMessage(event.sender.id, {text: outfitMessage(event.sender.id)});
                 console.log("Postback received: " + JSON.stringify(event.postback));
@@ -117,7 +117,8 @@ function outfitMessage(recipientId)  {
                 }
             };
 
-            return message;
+            sendMessage(recipientId, message);
+            return true;
     }
 
     return false;
