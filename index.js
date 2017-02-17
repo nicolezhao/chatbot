@@ -39,7 +39,7 @@ app.post('/webhook', function (req, res) {
             }
            
         } else if (event.postback) {
-            if (event.postback.payload == 'Outfit'){
+            if (event.postback.payload == 'Call outfits function'){
                 message = {text: "Here are some outfits!"};
                 sendMessage(event.sender.id, message);
                 //sendMessage(event.sender.id, {text: outfitMessage(event.sender.id)});
@@ -96,7 +96,7 @@ function outfitMessage(recipientId)  {
                             }, {
                                 "type": "postback",
                                 "title": "I like this",
-                                "payload": "Outfit",
+                                "payload": "x",
                                 }],
                             }, {
                                 "title": "Outfit 2",
@@ -109,7 +109,7 @@ function outfitMessage(recipientId)  {
                             }, {
                                 "type": "postback",
                                 "title": "I like this",
-                                "payload": "Outfit",
+                                "payload": "x",
                             }],
                         }]
                     }
@@ -164,7 +164,8 @@ function weatherMessage(recipientId, text) {
                             }, {
                                 "type": "postback",
                                 "title": "Show me outfits",
-                                "payload": "User " + recipientId + " likes us ",
+                                "payload": "Call outfits function",
+                                //"payload": "User " + recipientId + " likes us ",
                             }],
                         }]
                     }
