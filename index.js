@@ -76,21 +76,20 @@ function sendMessage(recipientId, message) {
 
 function initialMessage(recipientId)  {
 
-    message = {
-         "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": [{
-                    "title": "Button",
-                    "subtitle": "Got it",
-                    "buttons": [{
-                        "type": "web_url",
-                        "title": "Outfits like this"
-                    }, 
-                }]
-            }
-        }
+    message = 
+{
+                                "title": "Outfit 2",
+                                "subtitle": "Got it",
+                                //"image_url": imageUrl ,
+                                "buttons": [{
+                                "type": "web_url",
+                                "url": imageUrl,
+                                "title": "Outfits like this"
+                            }, {
+                                "type": "postback",
+                                "title": "I like this",
+                                "payload": "Like",
+                            }],
     };
 
     sendMessage(recipientId, message);
