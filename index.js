@@ -31,6 +31,7 @@ app.post('/webhook', function (req, res) {
             console.log(text);
             if(text == 'hi'){
                 sendMessage(event.sender.id, {text});
+                initialMessage(event.sender.id);
             } else if (text =='Toronto'){
                 weatherMessage(event.sender.id, text);
             }
@@ -70,6 +71,31 @@ function sendMessage(recipientId, message) {
             console.log('Error: ', response.body.error);
         }
     });
+
+};
+
+function initialMessage(recipientId)  {
+
+    message = {
+         "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Button",
+                    "subtitle": "Got it",
+                    "buttons": [{
+                        "type": "web_url",
+                        "url": imageUrl,
+                        "title": "Outfits like this"
+                    }, 
+                        }]
+                    }
+                }
+            };
+
+            sendMessage(recipientId, message);
+            return true;
 
 };
 
