@@ -42,6 +42,7 @@ app.post('/webhook', function (req, res) {
             if (event.postback.payload == 'Call outfits function'){
                 message = {text: "Here are some outfits!"};
                 sendMessage(event.sender.id, message);
+                outfitMessage(event.sender.id);
                 //sendMessage(event.sender.id, {text: outfitMessage(event.sender.id)});
                 console.log("Postback received: " + JSON.stringify(event.postback));
             }
@@ -151,7 +152,7 @@ function weatherMessage(recipientId, text) {
                             }, {
                                 "type": "postback",
                                 "title": "Show me outfits",
-                                "payload": "User " + recipientId + " likes us " + imageUrl,
+                                "payload": "Call outfits function",
                                 }],
                             }, {
                                 "title": "Weather",
@@ -165,7 +166,7 @@ function weatherMessage(recipientId, text) {
                                 "type": "postback",
                                 "title": "Show me outfits",
                                 "payload": "Call outfits function",
-                                //"payload": "User " + recipientId + " likes us ",
+                                //MIGHT BE USEFUL LATER: "payload": "User " + recipientId + " likes us ",
                             }],
                         }]
                     }
