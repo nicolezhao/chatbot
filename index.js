@@ -30,7 +30,6 @@ app.post('/webhook', function (req, res) {
             var text = event.message.text;
             console.log(text);
             if(text == 'hello'){
-                sendMessage(event.sender.id, {text});
                 initialMessage(event.sender.id);
             } else if (text =='Toronto'){
                 weatherMessage(event.sender.id, text);
@@ -49,7 +48,7 @@ app.post('/webhook', function (req, res) {
             } else if (event.postback.payload == 'Like'){
                 sendMessage(event.sender.id, {text: "<3"});
             }
-        } else if (event.quick_replies.payload){
+        } else if (event.text.payload == "Toronto"){
             sendMessage(event.sender.id, {text: "GOT IT!"});
         }
     }
@@ -83,13 +82,13 @@ function initialMessage(recipientId)  {
     "quick_replies":[
       {
         "content_type":"text",
-        "title":"Red",
-        "payload":"Like"
+        "title":"Toronto",
+        "payload":"Toronto"
       },
       {
         "content_type":"text",
-        "title":"Green",
-        "payload":"Like"
+        "title":"San Fran",
+        "payload":"San Fran"
       }
     ]
   }
