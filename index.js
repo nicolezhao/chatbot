@@ -48,7 +48,7 @@ app.post('/webhook', function (req, res) {
             } else if (event.postback.payload == 'Like'){
                 sendMessage(event.sender.id, {text: "I like you too"});
             }
-        } else if (event.text.payload == "San Fran"){
+        } else if (event.content_type.payload == "San Fran"){
             sendMessage(event.sender.id, {text: "GOT IT!"});
         }
     }
@@ -81,12 +81,12 @@ function initialMessage(recipientId)  {
     "text":"Pick a city:",
     "quick_replies":[
       {
-        "type": "postback",
+        "content_type":"text",
         "title":"Toronto",
         "payload":"Toronto"
       },
       {
-        "type": "postback",
+        "content_type":"text",
         "title":"San Fran",
         "payload":"San Fran"
       }
