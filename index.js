@@ -30,7 +30,7 @@ app.post('/webhook', function (req, res) {
             var text = event.message.text;
             console.log(text);
             if(text == 'hello'){
-                initialMessage(event.sender.id);
+                sendMessage(event.sender.id, {text});
             } else if (text =='Toronto'){
                 weatherMessage(event.sender.id, text);
             }
@@ -46,10 +46,8 @@ app.post('/webhook', function (req, res) {
                 //sendMessage(event.sender.id, {text: outfitMessage(event.sender.id)});
                 console.log("Postback received: " + JSON.stringify(event.postback));
             } else if (event.postback.payload == 'Like'){
-                sendMessage(event.sender.id, {text: "I like you too"});
+                sendMessage(event.sender.id, {text: "I like"});
             }
-        } else if (event.text.payload == "San Fran"){
-            sendMessage(event.sender.id, {text: "GOT IT!"});
         }
     }
     res.sendStatus(200);
@@ -75,28 +73,6 @@ function sendMessage(recipientId, message) {
 
 };
 
-function initialMessage(recipientId)  {
-
-    message ={
-    "text":"Pick a city:",
-    "quick_replies":[
-      {
-        "content_type":"text",
-        "title":"Toronto",
-        "payload":"Toronto"
-      },
-      {
-        "content_type":"text",
-        "title":"San Fran",
-        "payload":"San Fran"
-      }
-    ]
-  }
-
-    sendMessage(recipientId, message);
-    return true;
-
-};
 
 
 
