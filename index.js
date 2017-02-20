@@ -30,7 +30,6 @@ app.post('/webhook', function (req, res) {
             var text = event.message.text;
             console.log(text);
             if(text == 'hello'){
-                sendMessage(event.sender.id, {text});
                 initialMessage(event.sender.id);
             } else if (text =='Toronto'){
                 weatherMessage(event.sender.id, text);
