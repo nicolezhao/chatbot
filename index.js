@@ -48,7 +48,7 @@ app.post('/webhook', function (req, res) {
             } else if (event.postback.payload == 'Like'){
                 sendMessage(event.sender.id, {text: "<3"});
             }
-        } else if (event.text.payload == "San Fran"){
+        } else if (event.text.payload == "Toronto"){
             sendMessage(event.sender.id, {text: "GOT IT!"});
         }
     }
