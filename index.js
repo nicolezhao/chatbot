@@ -34,6 +34,8 @@ app.post('/webhook', function (req, res) {
                 initialMessage(event.sender.id);
             } else if (text =='Toronto'){
                 weatherMessage(event.sender.id, text);
+            } else if (text == 'San Fran'){
+                sendMessage(event.sender.id, {text: "I have a lover in San Fran"});
             }
             else{
                 sendMessage(event.sender.id, {text: "Could not process your message :("});
