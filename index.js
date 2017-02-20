@@ -47,10 +47,10 @@ app.post('/webhook', function (req, res) {
                 console.log("Postback received: " + JSON.stringify(event.postback));
             } else if (event.postback.payload == 'Like'){
                 sendMessage(event.sender.id, {text: "I like you too"});
-            } else if (event.postback.payload == "San Fran"){
-                sendMessage(event.sender.id, {text: "GOT IT!"});
             }
-        } 
+        } else if (event.text.payload == "San Fran"){
+            sendMessage(event.sender.id, {text: "GOT IT!"});
+        }
     }
     res.sendStatus(200);
 });
