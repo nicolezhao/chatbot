@@ -49,8 +49,8 @@ app.post('/webhook', function (req, res) {
             } else if (event.postback.payload == 'Like'){
                 sendMessage(event.sender.id, {text: "<3"});
             }
-        } else if (event.quick_replies){
-            sendMessage(event.sender.id, {text: "GOT IT!"});
+        } else if (event.payload){
+            sendMessage(event.sender.id, {text: "GOT IT!"}); //DOESNT WORK
         }
     }
     res.sendStatus(200);
