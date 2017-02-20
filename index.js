@@ -49,8 +49,8 @@ app.post('/webhook', function (req, res) {
             } else if (event.postback.payload == 'Like'){
                 sendMessage(event.sender.id, {text: "<3"});
             }
-        } else if (event.text.payload){
-            sendMessage(event.sender.id, {text: "GOT IT!"}); //DOESNT WORK
+        } else if (event.quick_replies.payload){
+            sendMessage(event.sender.id, {text: "GOT IT!"});
         }
     }
     res.sendStatus(200);
@@ -83,12 +83,12 @@ function initialMessage(recipientId)  {
     "quick_replies":[
       {
         "content_type":"text",
-        "title":"Toronto",
+        "title":"Red",
         "payload":"Like"
       },
       {
         "content_type":"text",
-        "title":"San Francisco",
+        "title":"Green",
         "payload":"Like"
       }
     ]
