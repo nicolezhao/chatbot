@@ -30,12 +30,8 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {  
             var text = event.message.text;
             console.log(text);
-            curl -X POST -H "Content-Type: application/json" -d '{ 
-              "get_started":{
-                "payload":"GET_STARTED_PAYLOAD"
-              }
-            }' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=PAGE_ACCESS_TOKEN"     
-            
+            getstarted(event.sender.id);
+
             if(text == 'hello'){
                 sendMessage(event.sender.id, {text});
                 initialMessage(event.sender.id);
@@ -56,7 +52,7 @@ app.post('/webhook', function (req, res) {
                 //sendMessage(event.sender.id, {text: outfitMessage(event.sender.id)});
                 console.log("Postback received: " + JSON.stringify(event.postback));
             } else if (event.postback.payload == 'Like'){
-                sendMessage(event.sender.id, {text: "I like you too"});
+                sendMessage(event.sender.id, {text: "Come back anytime for more!"});
             }
         }
     }
@@ -81,6 +77,20 @@ function sendMessage(recipientId, message) {
         }
     });
 
+};
+
+function getStarted(recepientID){
+    greeting:[
+    {
+      "locale":"default",
+      "text":"Hello!"
+    }, {
+      "locale":"en_US",
+      "text":"Timeless apparel for the masses."
+    }
+  ] 
+  sendMessage(recepientId, greeting);
+  return true; 
 };
 
 function initialMessage(recipientId)  {
