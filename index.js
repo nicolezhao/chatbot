@@ -32,13 +32,17 @@ app.post('/webhook', function (req, res) {
             console.log(text);
             // getStarted(event.sender.id);
 
-            if(text == 'hello'){
-                initialMessage(event.sender.id);
-            } else if (text =='Toronto'){
-                weatherMessage(event.sender.id, text);
-            } else if (text == 'San Fran'){
+            if (text){
                 weatherMessage(event.sender.id, text);
             }
+
+            // if(text == 'hello'){
+            //     initialMessage(event.sender.id);
+            // } else if (text =='Toronto'){
+            //     weatherMessage(event.sender.id, text);
+            // } else if (text == 'San Fran'){
+            //     weatherMessage(event.sender.id, text);
+            // }
             else{
                 sendMessage(event.sender.id, {text: "Could not process your message :("});
             }
@@ -170,10 +174,9 @@ function outfitMessage(recipientId)  {
 // send rich message 
 function weatherMessage(recipientId, text) {
 
-    text = text || "";
-    var values = text.split(' ');
+    var city = text;
 
-    if (values.length === 1 && values[0] === 'Toronto') {
+    // if (values.length === 1 && values[0] === 'Toronto') {
 
             var imageUrl = "https://www.theweathernetwork.com/ca/hourly-weather-forecast/ontario/toronto";
 
@@ -183,7 +186,7 @@ function weatherMessage(recipientId, text) {
                     "payload": {
                         "template_type": "generic",
                         "elements": [{
-                            "title": "Toronto",
+                            "title": city,
                             "subtitle": "-2°",
                             "buttons": [{
                                 "type": "web_url",
@@ -196,7 +199,7 @@ function weatherMessage(recipientId, text) {
                                 }],
                             }, {
                                 "title": "Weather",
-                                "subtitle": "Toronto",
+                                "subtitle": city,
                                 //"image_url": imageUrl ,
                                 "buttons": [{
                                 "type": "web_url",
@@ -216,9 +219,9 @@ function weatherMessage(recipientId, text) {
             sendMessage(recipientId, message);
 
             return true;
-    }
+    // }
 
-    return false;
+    // return false;
 
 };
 
