@@ -21,6 +21,7 @@ app.get('/webhook', function (req, res) {
     }
 });
 
+
 // handler receiving messages
 app.post('/webhook', function (req, res) {  
     var events = req.body.entry[0].messaging;
@@ -29,6 +30,12 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {  
             var text = event.message.text;
             console.log(text);
+            curl -X POST -H "Content-Type: application/json" -d '{ 
+              "get_started":{
+                "payload":"GET_STARTED_PAYLOAD"
+              }
+            }' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=PAGE_ACCESS_TOKEN"     
+            
             if(text == 'hello'){
                 sendMessage(event.sender.id, {text});
                 initialMessage(event.sender.id);
@@ -58,11 +65,6 @@ app.post('/webhook', function (req, res) {
 
 // generic function sending messages
 function sendMessage(recipientId, message) {  
-    { 
-        "get_started":{
-        "payload":"GET_STARTED_PAYLOAD"
-        }
-    }
         request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
