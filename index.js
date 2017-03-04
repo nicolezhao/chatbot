@@ -2,8 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');  
 var request = require('request');  
 var app = express();
-var weather = require("weather.js");
-var weatherInstance = new weather(); 
+var weather = require('weather-js');
 
 app.use(bodyParser.urlencoded({extended: false}));  
 app.use(bodyParser.json());  
@@ -175,11 +174,11 @@ function outfitMessage(recipientId)  {
 function weatherMessage(recipientId, text) {
 
     var city = text;
-    weatherInstance.getCurrent(city, function(current) {
-      console.log(
-        ["currently:",current.temperature(),"and",current.conditions()].join(" ")
-      )
-    })
+    weather.find({search: 'San Francisco, CA', degreeType: 'F'}, function(err, result) {
+      if(err) console.log(err);
+     
+      console.log(JSON.stringify(result, null, 2));
+    });
 
     // if (values.length === 1 && values[0] === 'Toronto') {
 
