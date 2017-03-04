@@ -3,10 +3,10 @@ var bodyParser = require('body-parser');
 var request = require('request');  
 var app = express();
 
-// var weather = require('openweather-apis');
-// weather.setLang('en');
-// weather.setAPPID('b79ca3d3ebd382d195294ae0880dc596');
-// weather.setUnits('metric');
+var weather = require('openweather-apis');
+weather.setLang('en');
+weather.setAPPID('b79ca3d3ebd382d195294ae0880dc596');
+weather.setUnits('metric');
 
 app.use(bodyParser.urlencoded({extended: false}));  
 app.use(bodyParser.json());  
@@ -166,13 +166,16 @@ function outfitMessage(recipientId)  {
 
 };
 
-// function getWeather(recipientId, text){
+function getWeather(recipientId, text){
 
-// weather.setCity(text);
-//     weather.getTemperature(function(err, temp){
-//         console.log(temp);
-//     });
-// }
+    message = {weather.setCity(text);
+        weather.getTemperature(function(err, temp){
+            console.log(temp);
+        });
+    }
+
+    sendMessage(recipientId, message);
+}
 
 // send rich message 
 function weatherMessage(recipientId, text) {
