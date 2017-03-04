@@ -30,15 +30,14 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {  
             var text = event.message.text;
             console.log(text);
-            getstarted(event.sender.id);
+            // getStarted(event.sender.id);
 
             if(text == 'hello'){
-                sendMessage(event.sender.id, {text});
                 initialMessage(event.sender.id);
             } else if (text =='Toronto'){
                 weatherMessage(event.sender.id, text);
             } else if (text == 'San Fran'){
-                sendMessage(event.sender.id, {text: "I have a lover in San Fran"});
+                weatherMessage(event.sender.id, text);
             }
             else{
                 sendMessage(event.sender.id, {text: "Could not process your message :("});
@@ -79,19 +78,19 @@ function sendMessage(recipientId, message) {
 
 };
 
-function getStarted(recepientID){
-    greeting:[
-    {
-      "locale":"default",
-      "text":"Hello!"
-    }, {
-      "locale":"en_US",
-      "text":"Timeless apparel for the masses."
-    }
-  ] 
-  sendMessage(recepientId, greeting);
-  return true; 
-};
+// function getStarted(recepientID){
+//     greeting:[
+//     {
+//       "locale":"default",
+//       "text":"Hello!"
+//     }, {
+//       "locale":"en_US",
+//       "text":"Timeless apparel for the masses."
+//     }
+//   ] 
+//   sendMessage(recepientId, greeting);
+//   return true; 
+// };
 
 function initialMessage(recipientId)  {
 
