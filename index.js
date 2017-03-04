@@ -166,7 +166,7 @@ function outfitMessage(recipientId)  {
 
 function getWeather(recipientId, text){
 
-weather.setCity(city);
+weather.setCity(text);
     weather.getTemperature(function(err, temp){
         console.log(temp);
     });
