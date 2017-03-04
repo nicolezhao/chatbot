@@ -2,7 +2,9 @@ var express = require('express');
 var bodyParser = require('body-parser');  
 var request = require('request');  
 var app = express();
-// var weather = require('weather-js');
+var weather = require('openweather-apis');
+
+weather.setLang('en');
 
 app.use(bodyParser.urlencoded({extended: false}));  
 app.use(bodyParser.json());  
@@ -36,14 +38,6 @@ app.post('/webhook', function (req, res) {
             if (text){
                 weatherMessage(event.sender.id, text);
             }
-
-            // if(text == 'hello'){
-            //     initialMessage(event.sender.id);
-            // } else if (text =='Toronto'){
-            //     weatherMessage(event.sender.id, text);
-            // } else if (text == 'San Fran'){
-            //     weatherMessage(event.sender.id, text);
-            // }
             else{
                 sendMessage(event.sender.id, {text: "Could not process your message :("});
             }
@@ -174,11 +168,12 @@ function outfitMessage(recipientId)  {
 function weatherMessage(recipientId, text) {
 
     var city = text;
-    // weather.find({search: 'San Francisco, CA', degreeType: 'F'}, function(err, result) {
-    //   if(err) console.log(err);
-     
-    //   console.log(JSON.stringify(result, null, 2));
-    // })
+    
+    weather.setCity(city);
+    weather.getTemperature(function(err, temp){
+        console.log(temp);
+    });
+
 
     // if (values.length === 1 && values[0] === 'Toronto') {
 
