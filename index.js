@@ -169,20 +169,15 @@ function outfitMessage(recipientId)  {
 };
 
 
-function getForcast(recepientId, city){
-    Weather.getCurrent("Kansas City", function(current) {
-      console.log(
-        ["currently:",current.temperature(),"and",current.conditions()].join(" ")
-      );
-    });
-}
-
-
 // send rich message 
 function weatherMessage(recipientId, text) {
 
     var city = text;
-    getForcast(recepientId, city);
+    Weather.getCurrent(city, function(current) {
+      console.log(
+        ["currently:",current.temperature(),"and",current.conditions()].join(" ")
+      );
+    });
 
     // if (values.length === 1 && values[0] === 'Toronto') {
 
