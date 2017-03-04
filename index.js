@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');  
 var request = require('request');  
 var app = express();
-var weather = require('openweather-apis');
+// var weather = require('openweather-apis');
 
 weather.setLang('en');
 weather.setAPPID('b79ca3d3ebd382d195294ae0880dc596');
@@ -38,8 +38,8 @@ app.post('/webhook', function (req, res) {
             // getStarted(event.sender.id);
 
             if (text){
-                getWeather(event.sender.id, text);
-                // weatherMessage(event.sender.id, text);
+                // getWeather(event.sender.id, text);
+                weatherMessage(event.sender.id, text);
             }
             else{
                 sendMessage(event.sender.id, {text: "Could not process your message :("});
@@ -166,13 +166,13 @@ function outfitMessage(recipientId)  {
 
 };
 
-function getWeather(recipientId, text){
+// function getWeather(recipientId, text){
 
-weather.setCity(text);
-    weather.getTemperature(function(err, temp){
-        console.log(temp);
-    });
-}
+// weather.setCity(text);
+//     weather.getTemperature(function(err, temp){
+//         console.log(temp);
+//     });
+// }
 
 // send rich message 
 function weatherMessage(recipientId, text) {
