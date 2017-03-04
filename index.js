@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var request = require('request');  
 var app = express();
 var weather = require("weather.js");
+var weatherInstance = new weather(); 
 
 app.use(bodyParser.urlencoded({extended: false}));  
 app.use(bodyParser.json());  
@@ -174,7 +175,7 @@ function outfitMessage(recipientId)  {
 function weatherMessage(recipientId, text) {
 
     var city = text;
-    Weather.getCurrent(city, function(current) {
+    weatherInstance.getCurrent(city, function(current) {
       console.log(
         ["currently:",current.temperature(),"and",current.conditions()].join(" ")
       )
