@@ -5,7 +5,7 @@ var app = express();
 var weather = require('openweather-apis');
 
 weather.setLang('en');
-weather.setAPPID(b79ca3d3ebd382d195294ae0880dc596);
+weather.setAPPID('b79ca3d3ebd382d195294ae0880dc596');
 weather.setUnits('metric');
 
 app.use(bodyParser.urlencoded({extended: false}));  
