@@ -36,7 +36,8 @@ app.post('/webhook', function (req, res) {
             // getStarted(event.sender.id);
 
             if (text){
-                weatherMessage(event.sender.id, text);
+                getWeather(event.sender.id, text);
+                // weatherMessage(event.sender.id, text);
             }
             else{
                 sendMessage(event.sender.id, {text: "Could not process your message :("});
@@ -77,7 +78,7 @@ function sendMessage(recipientId, message) {
 
 };
 
-// function getStarted(recepientID){
+// function getStarted(recipientID){
 //     greeting:[
 //     {
 //       "locale":"default",
@@ -163,16 +164,18 @@ function outfitMessage(recipientId)  {
 
 };
 
+function getWeather(recipientId, text){
+
+weather.setCity(city);
+    weather.getTemperature(function(err, temp){
+        console.log(temp);
+    });
+}
 
 // send rich message 
 function weatherMessage(recipientId, text) {
 
     var city = text;
-    
-    weather.setCity(city);
-    weather.getTemperature(function(err, temp){
-        console.log(temp);
-    });
 
 
     // if (values.length === 1 && values[0] === 'Toronto') {
