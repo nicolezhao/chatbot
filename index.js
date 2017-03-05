@@ -145,7 +145,7 @@ function weatherMessage(recipientId, temperature) {
                                 "payload": "Call outfits function",
                                 }],
                             }, {
-                                "title": city,
+                                "title": "test",
                                 "subtitle": "weather °",
                                 //"image_url": imageUrl ,
                                 "buttons": [{
