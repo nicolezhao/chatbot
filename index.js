@@ -107,54 +107,6 @@ function initialMessage(recipientId)  {
 };
 
 
-
-function outfitMessage(recipientId)  {
-
-    //text = text || "";
-    //var values = text.split(' ');
-
-            var imageUrl = "https://www.pinterest.com/pin/AdFO5sYa7C0wmM1eNhF3SWn192Ru_VGnAHMnQndpboCJEGWNnrdx2Ek/";
-
-            message = {
-                "attachment": {
-                    "type": "template",
-                    "payload": {
-                        "template_type": "generic",
-                        "elements": [{
-                            "title": "Outfit 1",
-                            "subtitle": "Got it",
-                            "buttons": [{
-                                "type": "web_url",
-                                "url": imageUrl,
-                                "title": "Outfits like this"
-                            }, {
-                                "type": "postback",
-                                "title": "I like this",
-                                "payload": "Like",
-                                }],
-                            }, {
-                                "title": "Outfit 2",
-                                "subtitle": "Got it",
-                                //"image_url": imageUrl ,
-                                "buttons": [{
-                                "type": "web_url",
-                                "url": imageUrl,
-                                "title": "Outfits like this"
-                            }, {
-                                "type": "postback",
-                                "title": "I like this",
-                                "payload": "Like",
-                            }],
-                        }]
-                    }
-                }
-            };
-
-            sendMessage(recipientId, message);
-            return true;
-
-};
-
 function getWeather(recipientId, text){
 
 weather.setCity(text);
@@ -165,7 +117,7 @@ weather.setCity(text);
 }
 
 // send rich message 
-function weatherMessage(recipientId, text, degree) {
+function weatherMessage(recipientId, text, temp) {
 
     var city = text;
     var degrees = temp;
@@ -219,3 +171,49 @@ function weatherMessage(recipientId, text, degree) {
 
 };
 
+function outfitMessage(recipientId)  {
+
+    //text = text || "";
+    //var values = text.split(' ');
+
+            var imageUrl = "https://www.pinterest.com/pin/AdFO5sYa7C0wmM1eNhF3SWn192Ru_VGnAHMnQndpboCJEGWNnrdx2Ek/";
+
+            message = {
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": [{
+                            "title": "Outfit 1",
+                            "subtitle": "Got it",
+                            "buttons": [{
+                                "type": "web_url",
+                                "url": imageUrl,
+                                "title": "Outfits like this"
+                            }, {
+                                "type": "postback",
+                                "title": "I like this",
+                                "payload": "Like",
+                                }],
+                            }, {
+                                "title": "Outfit 2",
+                                "subtitle": "Got it",
+                                //"image_url": imageUrl ,
+                                "buttons": [{
+                                "type": "web_url",
+                                "url": imageUrl,
+                                "title": "Outfits like this"
+                            }, {
+                                "type": "postback",
+                                "title": "I like this",
+                                "payload": "Like",
+                            }],
+                        }]
+                    }
+                }
+            };
+
+            sendMessage(recipientId, message);
+            return true;
+
+};
