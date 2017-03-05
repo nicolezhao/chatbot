@@ -112,8 +112,8 @@ weather.setCity(text);
         weather.getTemperature(function(err, temp){
         var temperature = temp;
         console.log(temp);
+        return temperature;
     });
-    return temperature;
 }
 
 // send rich message 
