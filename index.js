@@ -135,8 +135,8 @@ function weatherMessage(recipientId, text) {
                     "payload": {
                         "template_type": "generic",
                         "elements": [{
-                            "title": degrees,
-                            "subtitle": city,
+                            "title": city,
+                            "subtitle": "test",
                             "buttons": [{
                                 "type": "web_url",
                                 "url": imageUrl,
