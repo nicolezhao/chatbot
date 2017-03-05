@@ -123,7 +123,7 @@ function weatherMessage(recipientId, text) {
 
     var city = text;
     var degrees = getWeather(recipientId, text);
-    console.log(typeof(degrees));
+    console.log(typeof(getWeather(recipientId, text)));
     var number= 6;
 
     // if (values.length === 1 && values[0] === 'Toronto') {
