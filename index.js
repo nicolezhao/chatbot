@@ -162,7 +162,7 @@ weather.setCity(text);
         console.log(temp);
     });
 
-    sendMessage(recipientId, temp);
+    sendMessage(recipientId, weather.getTemperature(function(err, temp));
 }
 
 // send rich message 
