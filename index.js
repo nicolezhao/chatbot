@@ -120,6 +120,7 @@ weather.setCity(text);
 function weatherMessage(recipientId, text, degrees) {
 
     var city = text;
+    var degrees = degrees;
 
     // if (values.length === 1 && values[0] === 'Toronto') {
 
