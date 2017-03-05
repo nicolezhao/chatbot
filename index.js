@@ -38,8 +38,8 @@ app.post('/webhook', function (req, res) {
             // getStarted(event.sender.id);
 
             if (text){
-                temperature = getWeather(event.sender.id, text);
-                weatherMessage(event.sender.id, temperature);
+                getWeather(event.sender.id, text);
+                weatherMessage(event.sender.id, text);
             }
             else{
                 sendMessage(event.sender.id, {text: "Could not process your message :("});
@@ -112,14 +112,15 @@ weather.setCity(text);
 weather.getTemperature(function(err, temp){
         var temperature = temp;
         console.log(temp);
-        return temperature.toString();
+        var tempstring = temperature.toString();
+        console.log(typeof(tempstring));
     });
 }
 
 // send rich message 
-function weatherMessage(recipientId, temperature) {
+function weatherMessage(recipientId, text) {
 
-    // var city = text;
+    var city = text;
     // var degrees = temperature;
 
 
@@ -133,8 +134,8 @@ function weatherMessage(recipientId, temperature) {
                     "payload": {
                         "template_type": "generic",
                         "elements": [{
-                            "title": "Hello",
-                            "subtitle": temperature,
+                            "title": city,
+                            "subtitle": getWeather(recipientId, text),
                             "buttons": [{
                                 "type": "web_url",
                                 "url": imageUrl,
@@ -145,7 +146,7 @@ function weatherMessage(recipientId, temperature) {
                                 "payload": "Call outfits function",
                                 }],
                             }, {
-                                "title": "test",
+                                "title": city,
                                 "subtitle": "weather °",
                                 //"image_url": imageUrl ,
                                 "buttons": [{
