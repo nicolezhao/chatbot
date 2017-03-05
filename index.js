@@ -112,6 +112,7 @@ weather.setCity(text);
 var temperature = weather.getTemperature(function(err, temp){
     console.log(temp);
     console.log(typeof(temp));
+    sendMessag(recepientId, {text: temp});
     return temp; 
 });
 // console.log(typeof(temperature));
