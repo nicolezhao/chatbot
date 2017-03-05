@@ -109,12 +109,12 @@ function initialMessage(recipientId)  {
 function getWeather(recipientId, text){
 
 weather.setCity(text);
-weather.getTemperature(function(err, temp){
+return weather.getTemperature(function(err, temp){
         var temperature = temp;
         console.log(temp);
         // var tempstring = temperature.toString();
         // console.log(typeof(tempstring));
-        return temperature.toString();
+        // return temperature.toString();
     });
 }
 
