@@ -121,9 +121,9 @@ weather.getTemperature(function(err, temp){
 // send rich message 
 function weatherMessage(recipientId, text) {
 
-    console.log(typeof(text));
     var city = text;
     var degrees = getWeather(recipientId, text);
+    console.log(typeof(degrees));
     var number= 6;
 
     // if (values.length === 1 && values[0] === 'Toronto') {
