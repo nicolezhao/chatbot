@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');  
 var request = require('request');  
 var app = express();
+var weather = require(weather.js);
 
 // var weather = require('openweather-apis');
 // weather.setLang('en');
