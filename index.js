@@ -39,7 +39,7 @@ app.post('/webhook', function (req, res) {
 
             if (text){
                 var degree = getWeather(event.sender.id, text);
-                weatherMessage(event.sender.id, text, degree);
+                weatherMessage(event.sender.id, text, temp);
             }
             else{
                 sendMessage(event.sender.id, {text: "Could not process your message :("});
@@ -161,13 +161,14 @@ weather.setCity(text);
     weather.getTemperature(function(err, temp){
         console.log(temp);
     });
+    return temp;
 }
 
 // send rich message 
 function weatherMessage(recipientId, text, degree) {
 
     var city = text;
-    var degree = degree;
+    var degrees = temp;
 
     // if (values.length === 1 && values[0] === 'Toronto') {
 
@@ -180,7 +181,7 @@ function weatherMessage(recipientId, text, degree) {
                         "template_type": "generic",
                         "elements": [{
                             "title": city,
-                            "subtitle": degree,
+                            "subtitle": degrees,
                             "buttons": [{
                                 "type": "web_url",
                                 "url": imageUrl,
