@@ -161,6 +161,8 @@ weather.setCity(text);
     weather.getTemperature(function(err, temp){
         console.log(temp);
     });
+
+    sendMessage(recipientId, temp);
 }
 
 // send rich message 
