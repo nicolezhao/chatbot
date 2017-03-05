@@ -112,8 +112,8 @@ weather.setCity(text);
 weather.getTemperature(function(err, temp){
         var temperature = temp;
         console.log(temp);
-        var tempstring = temperature.toString();
-        console.log(typeof(tempstring));
+        // var tempstring = temperature.toString();
+        // console.log(typeof(tempstring));
         return temperature.toString();
     });
 }
@@ -122,8 +122,7 @@ weather.getTemperature(function(err, temp){
 function weatherMessage(recipientId, text) {
 
     var city = text;
-    // var degrees = temperature;
-
+    var degrees = getWeather(recipientId, text);
 
     // if (values.length === 1 && values[0] === 'Toronto') {
 
@@ -135,8 +134,8 @@ function weatherMessage(recipientId, text) {
                     "payload": {
                         "template_type": "generic",
                         "elements": [{
-                            "title": getWeather(recipientId, text),
-                            "subtitle": "test",
+                            "title": city,
+                            "subtitle": degrees,
                             "buttons": [{
                                 "type": "web_url",
                                 "url": imageUrl,
