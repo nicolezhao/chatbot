@@ -38,8 +38,8 @@ app.post('/webhook', function (req, res) {
             // getStarted(event.sender.id);
 
             if (text){
-                var degrees = getWeather(event.sender.id, text);
-                weatherMessage(event.sender.id, text, degrees);
+                getWeather(event.sender.id, text);
+                weatherMessage(event.sender.id, text);
             }
             else{
                 sendMessage(event.sender.id, {text: "Could not process your message :("});
@@ -107,66 +107,6 @@ function initialMessage(recipientId)  {
 };
 
 
-function getWeather(recipientId, text){
-
-    weather.setCity(text);
-    return weather.getTemperature(function(err, temp)
-}
-
-// send rich message 
-function weatherMessage(recipientId, text, degrees) {
-
-    var city = text;
-    var degrees = degrees;
-
-    // if (values.length === 1 && values[0] === 'Toronto') {
-
-            var imageUrl = "https://www.theweathernetwork.com/ca/hourly-weather-forecast/ontario/toronto";
-
-            message = {
-                "attachment": {
-                    "type": "template",
-                    "payload": {
-                        "template_type": "generic",
-                        "elements": [{
-                            "title": city,
-                            "subtitle": degrees,
-                            "buttons": [{
-                                "type": "web_url",
-                                "url": imageUrl,
-                                "title": "Show me the weather"
-                            }, {
-                                "type": "postback",
-                                "title": "Show me outfits",
-                                "payload": "Call outfits function",
-                                }],
-                            }, {
-                                "title": city,
-                                "subtitle": "weather °",
-                                //"image_url": imageUrl ,
-                                "buttons": [{
-                                "type": "web_url",
-                                "url": imageUrl,
-                                "title": "Show me the weather"
-                            }, {
-                                "type": "postback",
-                                "title": "Show me outfits",
-                                "payload": "Call outfits function",
-                                //MIGHT BE USEFUL LATER: "payload": "User " + recipientId + " likes us ",
-                            }],
-                        }]
-                    }
-                }
-            };
-
-            sendMessage(recipientId, message);
-
-            return true;
-    // }
-
-    // return false;
-
-};
 
 function outfitMessage(recipientId)  {
 
@@ -214,3 +154,67 @@ function outfitMessage(recipientId)  {
             return true;
 
 };
+
+function getWeather(recipientId, text){
+
+weather.setCity(text);
+    weather.getTemperature(function(err, temp){
+        console.log(temp);
+    });
+}
+
+// send rich message 
+function weatherMessage(recipientId, text) {
+
+    var city = text;
+
+
+    // if (values.length === 1 && values[0] === 'Toronto') {
+
+            var imageUrl = "https://www.theweathernetwork.com/ca/hourly-weather-forecast/ontario/toronto";
+
+            message = {
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": [{
+                            "title": city,
+                            "subtitle": "placeholder °",
+                            "buttons": [{
+                                "type": "web_url",
+                                "url": imageUrl,
+                                "title": "Show me the weather"
+                            }, {
+                                "type": "postback",
+                                "title": "Show me outfits",
+                                "payload": "Call outfits function",
+                                }],
+                            }, {
+                                "title": city,
+                                "subtitle": "weather",
+                                //"image_url": imageUrl ,
+                                "buttons": [{
+                                "type": "web_url",
+                                "url": imageUrl,
+                                "title": "Show me the weather"
+                            }, {
+                                "type": "postback",
+                                "title": "Show me outfits",
+                                "payload": "Call outfits function",
+                                //MIGHT BE USEFUL LATER: "payload": "User " + recipientId + " likes us ",
+                            }],
+                        }]
+                    }
+                }
+            };
+
+            sendMessage(recipientId, message);
+
+            return true;
+    // }
+
+    // return false;
+
+};
+
