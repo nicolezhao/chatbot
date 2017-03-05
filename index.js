@@ -111,9 +111,10 @@ function getWeather(recipientId, text){
 weather.setCity(text);
 var temperature = weather.getTemperature(function(err, temp){
     console.log(temp);
+    console.log(typeof(temp));
     return temp; 
 });
-console.log(typeof(temperature));
+// console.log(typeof(temperature));
 return temperature;
 
 }
