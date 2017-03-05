@@ -2,7 +2,6 @@ var express = require('express');
 var bodyParser = require('body-parser');  
 var request = require('request');  
 var app = express();
-var getWeather = require('./app.js')('London');
 
 var weather = require('openweather-apis');
 weather.setLang('en');
@@ -40,7 +39,8 @@ app.post('/webhook', function (req, res) {
 
             if (text){
                 // getWeather(event.sender.id, text);
-                printWeather(text, weather)
+                var city = text;
+                printWeather(city, weather)
                 weatherMessage(event.sender.id, text);
             }
             else{
