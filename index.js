@@ -179,7 +179,7 @@ function weatherMessage(recipientId, text) {
                         "template_type": "generic",
                         "elements": [{
                             "title": city,
-                            "subtitle": temp"°",
+                            "subtitle": temp + "°",
                             "buttons": [{
                                 "type": "web_url",
                                 "url": imageUrl,
