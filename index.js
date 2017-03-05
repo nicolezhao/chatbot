@@ -2,12 +2,11 @@ var express = require('express');
 var bodyParser = require('body-parser');  
 var request = require('request');  
 var app = express();
-var weather = require(weather.js);
 
-// var weather = require('openweather-apis');
-// weather.setLang('en');
-// weather.setAPPID('b79ca3d3ebd382d195294ae0880dc596');
-// weather.setUnits('metric');
+var weather = require('openweather-apis');
+weather.setLang('en');
+weather.setAPPID('b79ca3d3ebd382d195294ae0880dc596');
+weather.setUnits('metric');
 
 app.use(bodyParser.urlencoded({extended: false}));  
 app.use(bodyParser.json());  
@@ -39,7 +38,7 @@ app.post('/webhook', function (req, res) {
             // getStarted(event.sender.id);
 
             if (text){
-                // getWeather(event.sender.id, text);
+                getWeather(event.sender.id, text);
                 weatherMessage(event.sender.id, text);
             }
             else{
@@ -47,7 +46,7 @@ app.post('/webhook', function (req, res) {
             }
            
         } else if (event.postback) {
-            if (event.postback.payload == 'get_started'){
+            if (event.postback.payload == get_started){
                 sendMessage(event.sender.id, {text: "Let's get started"});
             } else if(event.postback.payload == 'Call outfits function'){
                 //message = {text: "Here are some outfits!"};
@@ -83,19 +82,6 @@ function sendMessage(recipientId, message) {
 
 };
 
-// function getStarted(recipientID){
-//     greeting:[
-//     {
-//       "locale":"default",
-//       "text":"Hello!"
-//     }, {
-//       "locale":"en_US",
-//       "text":"Timeless apparel for the masses."
-//     }
-//   ] 
-//   sendMessage(recepientId, greeting);
-//   return true; 
-// };
 
 function initialMessage(recipientId)  {
 
@@ -169,24 +155,18 @@ function outfitMessage(recipientId)  {
 
 };
 
-// function getWeather(recipientId, text){
+function getWeather(recipientId, text){
 
-// weather.setCity(text);
-//     weather.getTemperature(function(err, temp){
-//         console.log(temp);
-//     });
-// }
+weather.setCity(text);
+    weather.getTemperature(function(err, temp){
+        console.log(temp);
+    });
+}
 
 // send rich message 
 function weatherMessage(recipientId, text) {
 
     var city = text;
-
-    Weather.getCurrent("Kansas City", function(current) {
-      console.log(
-        ["currently:",current.temperature(),"and",current.conditions()].join(" ")
-      );
-    });
 
 
     // if (values.length === 1 && values[0] === 'Toronto') {
