@@ -113,9 +113,8 @@ var temperature = weather.getTemperature(function(err, temp){
     console.log(temp);
     return temp; 
 });
-
-return temperature; 
 console.log(typeof(temperature));
+return temperature;
 
 }
 
