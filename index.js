@@ -109,21 +109,22 @@ function initialMessage(recipientId)  {
 function getWeather(recipientId, text){
 
 weather.setCity(text);
-return weather.getTemperature(function(err, temp){
-        var temperature = temp;
-        console.log(temp);
-        // var tempstring = temperature.toString();
-        // console.log(typeof(tempstring));
-        // return temperature.toString();
-    });
+var temperature = weather.getTemperature(function(err, temp){
+    console.log(temp);
+    return temp; 
+});
+
+return temperature; 
+console.log(typeof(temperature));
+
 }
 
 // send rich message 
 function weatherMessage(recipientId, text) {
 
     var city = text;
-    var degrees = getWeather(recipientId, text);
-    console.log(typeof(getWeather(recipientId, text)));
+    // var degrees = getWeather(recipientId, text);
+    // console.log(typeof(getWeather(recipientId, text)));
     var number= 6;
 
     // if (values.length === 1 && values[0] === 'Toronto') {
