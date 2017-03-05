@@ -134,8 +134,8 @@ function weatherMessage(recipientId, text) {
                     "payload": {
                         "template_type": "generic",
                         "elements": [{
-                            "title": city,
-                            "subtitle": getWeather(recipientId, text),
+                            "title": getWeather(recipientId, text),
+                            "subtitle": "test",
                             "buttons": [{
                                 "type": "web_url",
                                 "url": imageUrl,
