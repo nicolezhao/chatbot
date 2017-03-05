@@ -109,11 +109,8 @@ function initialMessage(recipientId)  {
 
 function getWeather(recipientId, text){
 
-weather.setCity(text);
-    weather.getTemperature(function(err, temp){
-        console.log(temp);
-    });
-    return temp;
+    weather.setCity(text);
+    return weather.getTemperature(function(err, temp)
 }
 
 // send rich message 
