@@ -46,7 +46,7 @@ app.post('/webhook', function (req, res) {
             }
            
         } else if (event.postback) {
-            if (event.postback.payload == 'Get started'){
+            if (event.postback.payload == 'get_started'){
                 sendMessage(event.sender.id, {text: "Let's get started"});
             } else if(event.postback.payload == 'Call outfits function'){
                 //message = {text: "Here are some outfits!"};
@@ -180,6 +180,12 @@ function outfitMessage(recipientId)  {
 function weatherMessage(recipientId, text) {
 
     var city = text;
+
+    Weather.getCurrent("Kansas City", function(current) {
+      console.log(
+        ["currently:",current.temperature(),"and",current.conditions()].join(" ")
+      );
+    });
 
 
     // if (values.length === 1 && values[0] === 'Toronto') {
