@@ -158,9 +158,11 @@ function outfitMessage(recipientId)  {
 function getWeather(recipientId, text){
 
 weather.setCity(text);
-return weather.getTemperature(function(err, temp){
+        weather.getTemperature(function(err, temp){
         console.log(temp);
+        sendMessage(recipientId, temp);
     });
+    return true;
 }
 
 // send rich message 
