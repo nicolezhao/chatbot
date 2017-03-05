@@ -155,18 +155,17 @@ function outfitMessage(recipientId)  {
 
 };
 
-function getWeather(recipientId, text){
-
-weather.setCity(text);
-    weather.getTemperature(function(err, temp){
-        console.log(temp);
-    });
-}
 
 // send rich message 
 function weatherMessage(recipientId, text) {
 
     var city = text;
+
+    weather.setCity(city);
+        weather.getTemperature(function(err, temp){
+            console.log(temp);
+        });
+    }
 
 
     // if (values.length === 1 && values[0] === 'Toronto') {
@@ -180,7 +179,7 @@ function weatherMessage(recipientId, text) {
                         "template_type": "generic",
                         "elements": [{
                             "title": city,
-                            "subtitle": "-2°",
+                            "subtitle": temp"°",
                             "buttons": [{
                                 "type": "web_url",
                                 "url": imageUrl,
