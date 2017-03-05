@@ -110,13 +110,10 @@ function getWeather(recipientId, text){
 
 weather.setCity(text);
         weather.getTemperature(function(err, temp){
+        var temperature = temp;
         console.log(temp);
-        message ={
-            "text": temp;
-        }
-        sendMessage(recipientId, message);
     });
-    return true;
+    return temperature;
 }
 
 // send rich message 
