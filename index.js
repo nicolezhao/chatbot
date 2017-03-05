@@ -179,7 +179,7 @@ function weatherMessage(recipientId, text) {
                         "template_type": "generic",
                         "elements": [{
                             "title": city,
-                            "subtitle": temp + "°",
+                            "subtitle": "placeholder temp",
                             "buttons": [{
                                 "type": "web_url",
                                 "url": imageUrl,
@@ -190,8 +190,8 @@ function weatherMessage(recipientId, text) {
                                 "payload": "Call outfits function",
                                 }],
                             }, {
-                                "title": "Weather",
-                                "subtitle": city,
+                                "title": city,
+                                "subtitle": "weather",
                                 //"image_url": imageUrl ,
                                 "buttons": [{
                                 "type": "web_url",
