@@ -111,8 +111,7 @@ function getWeather(recipientId, text){
 weather.setCity(text);
 var temperature = weather.getTemperature(function(err, temp){
     console.log(temp);
-    console.log(typeof(temp));
-    sendMessag(recepientId, {text: temp});
+    // console.log(typeof(temp));
     return temp; 
 });
 // console.log(typeof(temperature));
@@ -139,7 +138,7 @@ function weatherMessage(recipientId, text) {
                         "template_type": "generic",
                         "elements": [{
                             "title": city,
-                            "subtitle": number,
+                            "subtitle": weather.getTemperature(function(err, temp){return temp;});,
                             "buttons": [{
                                 "type": "web_url",
                                 "url": imageUrl,
