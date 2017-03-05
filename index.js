@@ -124,6 +124,7 @@ function weatherMessage(recipientId, text) {
     console.log(typeof(text));
     var city = text;
     var degrees = getWeather(recipientId, text);
+    var number= 6;
 
     // if (values.length === 1 && values[0] === 'Toronto') {
 
@@ -136,7 +137,7 @@ function weatherMessage(recipientId, text) {
                         "template_type": "generic",
                         "elements": [{
                             "title": city,
-                            "subtitle": "test",
+                            "subtitle": number,
                             "buttons": [{
                                 "type": "web_url",
                                 "url": imageUrl,
