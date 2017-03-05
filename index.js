@@ -121,6 +121,7 @@ weather.getTemperature(function(err, temp){
 // send rich message 
 function weatherMessage(recipientId, text) {
 
+    console.log(typeof(text));
     var city = text;
     var degrees = getWeather(recipientId, text);
 
