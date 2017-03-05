@@ -114,6 +114,7 @@ weather.getTemperature(function(err, temp){
         console.log(temp);
         var tempstring = temperature.toString();
         console.log(typeof(tempstring));
+        return temperature.toString();
     });
 }
 
