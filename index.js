@@ -38,7 +38,7 @@ app.post('/webhook', function (req, res) {
             // getStarted(event.sender.id);
 
             if (text){
-                var degree = getWeather(event.sender.id, text);
+                var temp = getWeather(event.sender.id, text);
                 weatherMessage(event.sender.id, text, temp);
             }
             else{
