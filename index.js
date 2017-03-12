@@ -38,9 +38,7 @@ app.post('/webhook', function (req, res) {
             // getStarted(event.sender.id);
 
             if (text){
-                // getWeather(event.sender.id, text);
-                var city = text;
-                printWeather(city, weather)
+                getWeather(event.sender.id, text);
                 weatherMessage(event.sender.id, text);
             }
             else{
@@ -84,61 +82,6 @@ function sendMessage(recipientId, message) {
 
 };
 
-///////////////////////////////////////////////////////////////////
-
-var http = require('http');
-
-//Print message
-function printWeather(city, weather) {
-    var message = 'In ' + city + ', there is ' + weather + ' degrees.';
-    console.log(message);
-}
-
-//Print out error messages
-function printError(error) {
-    console.error(error.message);
-}
-
-//Connect to the API URL api.openweathermap.org/data/2.5/weather?q={city name},{country code}
-module.exports =function get(city){
-    var request = http.get('http://api.openweathermap.org/data/2.5/weather?q='+ city + '&units=metric', function(response) {
-    var body = '';
-
-    //Read the data
-    response.on('data', function(chunk) {
-        body += chunk;
-    });
-
-    response.on('end', function() {
-        if (response.statusCode === 200) {
-            try {
-                //Parse the data
-                var weatherAPI = JSON.parse(body);
-
-                //Print the data
-                printWeather(weatherAPI.name, weatherAPI.main.temp);
-            } catch(error) {
-                //Parse error
-                printError(error);
-            }
-        } else {
-            //Status Code error
-            printError({message: 'There was an error getting the weather from ' + city + '. (' + http.STATUS_CODES[response.statusCode] + ')'});
-        }
-    })
-});
-
-//Connection error
-request.on('error', function (err) {
-
-printError(err);
-
-});
-
-};
-
-///////////////////////////////////////////////////////////////////
-
 
 function initialMessage(recipientId)  {
 
@@ -163,18 +106,18 @@ function initialMessage(recipientId)  {
 
 };
 
-// function getWeather(recipientId, text){
+function getWeather(recipientId, text){
 
-// weather.setCity(text);
-// var temperature = weather.getTemperature(function(err, temp){
-//     console.log(temp);
-//     // console.log(typeof(temp));
-//     return temp; 
-// });
+weather.setCity(text);
+var temperature = weather.getTemperature(function(err, temp){
+    console.log(temp);
+    // console.log(typeof(temp));
+    return temp; 
+});
 // console.log(typeof(temperature));
-// return temperature;
+return temperature;
 
-// }
+}
 
 // send rich message 
 function weatherMessage(recipientId, text) {
