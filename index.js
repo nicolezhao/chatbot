@@ -45,6 +45,8 @@ app.post('/webhook', function (req, res) {
                 getWeather(event.sender.id, text, function(temp){
                     sendLocation(event.sender.id);
                 });
+            } else if (text == 'Custom Location'){
+                console.log("Custom Location");
             }
             else{
                 sendMessage(event.sender.id, {text: "Could not process your message :("});
@@ -61,9 +63,6 @@ app.post('/webhook', function (req, res) {
                 console.log("Postback received: " + JSON.stringify(event.postback));
             } else if (event.postback.payload == 'Like'){
                 sendMessage(event.sender.id, {text: "Come back anytime for more!"});
-            } else if (event.payload == 'location') {
-                sendMessage(event.sender.id, {text: "Send Location"});
-                // sendLocation(event.sender.id);
             }
         }
     }
@@ -99,7 +98,7 @@ function initialMessage(recipientId)  {
       {
         "content_type":"text",
         "title":"Current Location",
-        "payload":"location"
+        "payload":""
       },
       {
         "content_type":"text",
