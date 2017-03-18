@@ -93,12 +93,12 @@ function initialMessage(recipientId)  {
     "text":"Send your location or type a city in:",
     "quick_replies":[
       {
-        "content_type":"text",
+        "content_type":"postback",
         "title":"Current Location",
         "payload":"location"
       },
       {
-        "content_type":"text",
+        "content_type":"postback",
         "title":"Custom Location",
         "payload":""
       }
