@@ -91,7 +91,7 @@ function initialMessage(recipientId)  {
 
     message ={
     "text":"Send your location or type a city in:",
-    "quick_replies":[
+    "payload":[
       {
         "content_type":"postback",
         "title":"Current Location",
