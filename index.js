@@ -48,7 +48,7 @@ app.post('/webhook', function (req, res) {
            
         } else if (event.postback) {
             if (event.postback.payload == 'get_started'){
-                sendMessage(event.sender.id, {text: "Let's get started"});
+                initialMessage(event.sender.id);
             } else if(event.postback.payload == 'Call outfits function'){
                 //message = {text: "Here are some outfits!"};
                 //sendMessage(event.sender.id, message);
