@@ -40,6 +40,8 @@ app.post('/webhook', function (req, res) {
                 getWeather(event.sender.id, text, function(temp){
                     weatherMessage(event.sender.id, text, temp);
                 });
+            } else if (text == 'Current Location'){
+                sendLocation(event.sender.id);
             }
             else{
                 sendMessage(event.sender.id, {text: "Could not process your message :("});
