@@ -46,8 +46,9 @@ app.post('/webhook', function (req, res) {
                     sendLocation(event.sender.id);
                 });
             } else if (text == 'Custom Location'){
-                sendMessage(event.sender.id, {text: "Type in a city:"});
-                console.log("Custom Location");
+                getWeather(event.sender.id, text, function(temp){
+                    console.log("Custom Location");
+                });
             }
             else{
                 sendMessage(event.sender.id, {text: "Could not process your message :("});
