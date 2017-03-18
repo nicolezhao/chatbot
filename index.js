@@ -163,7 +163,7 @@ function weatherMessage(recipientId, text, temp) {
                             }, {
                                 "type": "postback",
                                 "title": "Show me outfits",
-                                "payload": "location",
+                                "payload": "get_started",
                                 }],
                             }, {
                                 "title": city,
