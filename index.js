@@ -57,7 +57,7 @@ app.post('/webhook', function (req, res) {
                 console.log("Postback received: " + JSON.stringify(event.postback));
             } else if (event.postback.payload == 'Like'){
                 sendMessage(event.sender.id, {text: "Come back anytime for more!"});
-            } else if (event.postback.payload == 'location') {
+            } else if (event.text.payload == 'location') {
                 sendMessage(event.sender.id, {text: "Send Location"});
                 // sendLocation(event.sender.id);
             }
