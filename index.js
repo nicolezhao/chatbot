@@ -42,9 +42,9 @@ app.post('/webhook', function (req, res) {
                     weatherMessage(event.sender.id, text, temp);
                 });
             } else if (text == 'Current Location'){
-                getWeather(event.sender.id, text, function(temp){
+                // getWeather(event.sender.id, text, function(temp){
                     sendLocation(event.sender.id);
-                });
+                // });
             } else if (text == 'Custom Location'){
                 sendMessage(event.sender.id, text);
             }
