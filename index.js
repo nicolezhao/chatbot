@@ -57,6 +57,8 @@ app.post('/webhook', function (req, res) {
                 console.log("Postback received: " + JSON.stringify(event.postback));
             } else if (event.postback.payload == 'Like'){
                 sendMessage(event.sender.id, {text: "Come back anytime for more!"});
+            } else if (event.postback.payload == 'location') {
+                sendLocation(event.sender.id);
             }
         }
     }
@@ -87,17 +89,17 @@ function sendMessage(recipientId, message) {
 function initialMessage(recipientId)  {
 
     message ={
-    "text":"Pick a city:",
+    "text":"Send your location or type a city in:",
     "quick_replies":[
       {
         "content_type":"text",
-        "title":"Toronto",
-        "payload":"Toronto"
+        "title":"Current Location",
+        "payload":"location"
       },
       {
         "content_type":"text",
-        "title":"San Fran",
-        "payload":"San Fran"
+        "title":"Send",
+        "payload":""
       }
     ]
   }
@@ -173,6 +175,21 @@ function weatherMessage(recipientId, text, temp) {
     // }
 
     // return false;
+
+};
+
+function sendLocation(recipientId)  {
+        message = {
+            "text":"Share your location:",
+            "quick_replies":[
+              {
+                "content_type":"location",
+                 }
+            ]
+          };
+
+        sendMessage(recipientId, message);
+        return true;
 
 };
 
