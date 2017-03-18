@@ -36,8 +36,7 @@ app.post('/webhook', function (req, res) {
             var text = event.message.text;
             console.log(text);
             // getStarted(event.sender.id);
-
-            if (text){
+            if ((text!= 'Current Location') && (text != 'Custom Location')){
                 getWeather(event.sender.id, text, function(temp){
                     weatherMessage(event.sender.id, text, temp);
                 });
@@ -93,12 +92,12 @@ function initialMessage(recipientId)  {
     "text":"Send your location or type a city in:",
     "payload":[
       {
-        "content_type":"postback",
+        "content_type":"text",
         "title":"Current Location",
         "payload":"location"
       },
       {
-        "content_type":"postback",
+        "content_type":"text",
         "title":"Custom Location",
         "payload":""
       }
