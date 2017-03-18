@@ -37,7 +37,7 @@ app.post('/webhook', function (req, res) {
             console.log(text);
             // getStarted(event.sender.id);
 
-            if (text){
+            if (text != 'Current Location'){
                 getWeather(event.sender.id, text, function(temp){
                     weatherMessage(event.sender.id, text, temp);
                 });
