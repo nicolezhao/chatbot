@@ -46,6 +46,7 @@ app.post('/webhook', function (req, res) {
                     sendLocation(event.sender.id);
                 });
             } else if (text == 'Custom Location'){
+                sendMessage(event.sender.id, {text: "Type in a city:"});
                 console.log("Custom Location");
             }
             else{
