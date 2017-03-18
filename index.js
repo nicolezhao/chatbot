@@ -90,7 +90,7 @@ function initialMessage(recipientId)  {
 
     message ={
     "text":"Send your location or type a city in:",
-    "payload":[
+    "quick_replies":[
       {
         "content_type":"text",
         "title":"Current Location",
