@@ -98,7 +98,7 @@ function initialMessage(recipientId)  {
       },
       {
         "content_type":"text",
-        "title":"Send",
+        "title":"Custom Location",
         "payload":""
       }
     ]
@@ -121,6 +121,21 @@ var temperature = weather.getTemperature(function(err, temp){
 // return temperature;
 
 }
+
+function sendLocation(recipientId)  {
+        message = {
+            "text":"Share your location:",
+            "quick_replies":[
+              {
+                "content_type":"location",
+                 }
+            ]
+          };
+
+        sendMessage(recipientId, message);
+        return true;
+
+};
 
 // send rich message 
 function weatherMessage(recipientId, text, temp) {
@@ -148,7 +163,7 @@ function weatherMessage(recipientId, text, temp) {
                             }, {
                                 "type": "postback",
                                 "title": "Show me outfits",
-                                "payload": "get_started",
+                                "payload": "location",
                                 }],
                             }, {
                                 "title": city,
@@ -175,21 +190,6 @@ function weatherMessage(recipientId, text, temp) {
     // }
 
     // return false;
-
-};
-
-function sendLocation(recipientId)  {
-        message = {
-            "text":"Share your location:",
-            "quick_replies":[
-              {
-                "content_type":"location",
-                 }
-            ]
-          };
-
-        sendMessage(recipientId, message);
-        return true;
 
 };
 
