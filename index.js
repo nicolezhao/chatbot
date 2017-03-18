@@ -58,7 +58,8 @@ app.post('/webhook', function (req, res) {
             } else if (event.postback.payload == 'Like'){
                 sendMessage(event.sender.id, {text: "Come back anytime for more!"});
             } else if (event.postback.payload == 'location') {
-                sendLocation(event.sender.id);
+                sendMessage(event.sender.id, {text: "Send Location"});
+                // sendLocation(event.sender.id);
             }
         }
     }
@@ -92,7 +93,7 @@ function initialMessage(recipientId)  {
     "text":"Send your location or type a city in:",
     "quick_replies":[
       {
-        "content_type":"postback",
+        "content_type":"text",
         "title":"Current Location",
         "payload":"location"
       },
