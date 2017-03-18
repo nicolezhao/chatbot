@@ -47,7 +47,7 @@ app.post('/webhook', function (req, res) {
             }
            
         } else if (event.postback) {
-            if (event.postback.payload == get_started){
+            if (event.postback.payload == 'get_started'){
                 sendMessage(event.sender.id, {text: "Let's get started"});
             } else if(event.postback.payload == 'Call outfits function'){
                 //message = {text: "Here are some outfits!"};
@@ -146,7 +146,7 @@ function weatherMessage(recipientId, text, temp) {
                             }, {
                                 "type": "postback",
                                 "title": "Show me outfits",
-                                "payload": "Call outfits function",
+                                "payload": "get_started",
                                 }],
                             }, {
                                 "title": city,
