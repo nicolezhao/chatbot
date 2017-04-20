@@ -202,7 +202,7 @@ function outfitMessage(recipientId)  {
 
             var Url = "https://www.pinterest.com/pin/AdFO5sYa7C0wmM1eNhF3SWn192Ru_VGnAHMnQndpboCJEGWNnrdx2Ek/";
             var imageUrl = "https://s-media-cache-ak0.pinimg.com/736x/eb/b5/b6/ebb5b60ea5b28f8dfc4a16650f4f63ae.jpg";
-            var imgUrltest= "/outfit-images/fall.jpg";
+            // var imgUrltest= "/outfit-images/fall.jpg";
 
             message = {
                 "attachment": {
@@ -212,7 +212,7 @@ function outfitMessage(recipientId)  {
                         "elements": [{
                             "title": "Outfit 1",
                             "subtitle": "Got it",
-                            "image_url": imageUrltest ,
+                            // "image_url": imageUrltest ,
                             "buttons": [{
                                 "type": "web_url",
                                 "url": Url,
