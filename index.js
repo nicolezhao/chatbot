@@ -200,7 +200,9 @@ function outfitMessage(recipientId)  {
     //text = text || "";
     //var values = text.split(' ');
 
-            var imageUrl = "https://www.pinterest.com/pin/AdFO5sYa7C0wmM1eNhF3SWn192Ru_VGnAHMnQndpboCJEGWNnrdx2Ek/";
+            // var imageUrl = "https://www.pinterest.com/pin/AdFO5sYa7C0wmM1eNhF3SWn192Ru_VGnAHMnQndpboCJEGWNnrdx2Ek/";
+            
+            var imageUrl = "https://s-media-cache-ak0.pinimg.com/736x/eb/b5/b6/ebb5b60ea5b28f8dfc4a16650f4f63ae.jpg";
 
             message = {
                 "attachment": {
