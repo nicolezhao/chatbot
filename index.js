@@ -200,9 +200,9 @@ function outfitMessage(recipientId)  {
     //text = text || "";
     //var values = text.split(' ');
 
-            // var imageUrl = "https://www.pinterest.com/pin/AdFO5sYa7C0wmM1eNhF3SWn192Ru_VGnAHMnQndpboCJEGWNnrdx2Ek/";
-            
+            var Url = "https://www.pinterest.com/pin/AdFO5sYa7C0wmM1eNhF3SWn192Ru_VGnAHMnQndpboCJEGWNnrdx2Ek/";
             var imageUrl = "https://s-media-cache-ak0.pinimg.com/736x/eb/b5/b6/ebb5b60ea5b28f8dfc4a16650f4f63ae.jpg";
+            var imgUrltest= "/outfit-images/fall.jpg";
 
             message = {
                 "attachment": {
@@ -212,9 +212,10 @@ function outfitMessage(recipientId)  {
                         "elements": [{
                             "title": "Outfit 1",
                             "subtitle": "Got it",
+                            "image_url": imageUrltest ,
                             "buttons": [{
                                 "type": "web_url",
-                                "url": imageUrl,
+                                "url": Url,
                                 "title": "Outfits like this"
                             }, {
                                 "type": "postback",
@@ -224,10 +225,10 @@ function outfitMessage(recipientId)  {
                             }, {
                                 "title": "Outfit 2",
                                 "subtitle": "Got it",
-                                //"image_url": imageUrl ,
+                                "image_url": imageUrl ,
                                 "buttons": [{
                                 "type": "web_url",
-                                "url": imageUrl,
+                                "url": Url,
                                 "title": "Outfits like this"
                             }, {
                                 "type": "postback",
